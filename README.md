@@ -225,7 +225,7 @@ Copy the ID.
 ai_fleet/
 │
 ├── ai_fleet.py
-├── yolov8n.engine (optional)
+├── yolov8n.pt (optional)
 ├── ai_fleet_log.csv
 └── README.md
 ```
