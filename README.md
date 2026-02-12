@@ -44,6 +44,7 @@ Connect as:
 | /dev/video0 | Driver Camera |
 | /dev/video1 | Road Camera |
 | /dev/video2 | Cargo Camera |
+Adjust the port Number after connections
 
 ## 3️⃣ SIM7600 USB LTE + GPS Module
 - SIM7600 USB version
@@ -413,7 +414,3 @@ This system creates a real-time AI fleet monitoring node capable of:
 - Remote alerting
 - Live video streaming
 - Dynamic mode switching
-
----
-
-END OF README
