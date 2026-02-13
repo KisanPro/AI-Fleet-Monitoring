@@ -199,7 +199,7 @@ def second_loop():
                 e=(ear(lm,[33,160,158,133,153,144]) +
                    ear(lm,[362,385,387,263,373,380]))/2
                 drowsy_counter = drowsy_counter+1 if e<0.18 else 0
-                if drowsy_counter >= 12:
+                if drowsy_counter >= 36:
                     send_alert("⚠️ DRIVER DROWSY")
                     drowsy_counter = 0
 
@@ -303,3 +303,4 @@ if __name__=="__main__":
     threading.Thread(target=gps_loop,daemon=True).start()
 
     app.run("0.0.0.0",5000,threaded=True)
+
