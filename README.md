@@ -1,4 +1,4 @@
-# 🚛 AI Fleet Monitoring System  
+# 🚛 AI Fleet Monitoring System  (Road - Continuous & Driver/Cargo - Switchable) 
 ## Jetson Orin Nano + 3 USB Cameras + SIM7600 USB
 
 ---
