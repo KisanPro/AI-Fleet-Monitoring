@@ -1,0 +1,32 @@
+# ============================================================
+# requirements.txt — Fleet Monitor Dependencies
+# Install: pip install -r requirements.txt --break-system-packages
+# ============================================================
+
+# ── Core vision & AI ─────────────────────────────────────────
+opencv-python-headless>=4.8.0
+mediapipe>=0.10.3
+ultralytics>=8.0.180          # YOLOv8
+
+# ── Web dashboard ────────────────────────────────────────────
+flask>=3.0.0
+flask-socketio>=5.3.6
+python-socketio>=5.10.0
+python-engineio>=4.8.0
+eventlet>=0.35.1               # async mode for flask-socketio
+
+# ── System / hardware ─────────────────────────────────────────
+psutil>=5.9.6                  # CPU / RAM metrics
+pyserial>=3.5                  # GPS serial
+numpy>=1.24.0
+openpyxl>=3.1.2                # Excel logging
+
+
+# ── On Jetson Orin Nano — install via apt / pip separately:
+# sudo apt install python3-gi python3-dev
+# pip install Jetson.GPIO --break-system-packages
+# (YOLOv8 CUDA: handled by ultralytics + torch pre-installed on JetPack)
+
+# ── Optional: temperature sensor ────────────────────────────
+# For DHT sensors:  pip install adafruit-circuitpython-dht
+# DS18B20 is read via sysfs (no extra package needed)
