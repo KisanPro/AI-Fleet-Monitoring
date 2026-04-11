@@ -1,0 +1,1209 @@
+2026-04-07 23:38:47,504 [MainThread          ] INFO    ============================================================
+2026-04-07 23:38:47,505 [MainThread          ] INFO      FLEET MONITOR — Jetson Orin Nano
+2026-04-07 23:38:47,505 [MainThread          ] INFO    ============================================================
+2026-04-07 23:38:47,539 [MainThread          ] INFO    Buzzer initialised on GPIO pin 15
+2026-04-07 23:38:47,540 [MainThread          ] INFO    Created alert log: logs/alerts.csv
+2026-04-07 23:38:47,541 [MainThread          ] INFO    Created benchmark log: logs/benchmark_log.csv
+2026-04-07 23:38:47,541 [AlertLogger         ] INFO    AlertLogger started
+2026-04-07 23:38:47,542 [BenchmarkLogger     ] INFO    BenchmarkLogger started
+2026-04-07 23:38:48,642 [MainThread          ] INFO    Camera found at index 0
+2026-04-07 23:38:49,752 [MainThread          ] INFO    Camera found at index 2
+2026-04-07 23:38:50,849 [MainThread          ] INFO    Camera found at index 4
+2026-04-07 23:38:50,854 [MainThread          ] INFO    Detected camera indices: [0, 2, 4]
+2026-04-07 23:38:50,856 [MainThread          ] INFO    CameraReader 'vehicle' started on index 0
+2026-04-07 23:38:50,857 [MainThread          ] INFO    CameraReader 'driver_cargo' started on index 2
+2026-04-07 23:38:50,858 [DrowsinessDetector  ] INFO    DrowsinessDetector starting …
+2026-04-07 23:38:50,859 [CargoDetector       ] INFO    CargoDetector starting …
+2026-04-07 23:38:50,878 [VehicleDetector     ] INFO    VehicleDetector starting …
+2026-04-07 23:38:50,883 [GPSManager          ] INFO    GPSManager: probing for SIM7600G-H …
+2026-04-07 23:38:50,883 [SensorManager       ] INFO    SensorManager starting …
+2026-04-07 23:38:50,884 [MainThread          ] INFO    Dashboard → http://localhost:5000
+2026-04-07 23:38:50,886 [MainThread          ] INFO    Dashboard → http://0.0.0.0:5000
+2026-04-07 23:38:50,901 [MainThread          ] INFO    [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.41.190.52:5000
+2026-04-07 23:38:50,904 [MainThread          ] INFO    [33mPress CTRL+C to quit[0m
+2026-04-07 23:38:50,990 [SensorManager       ] INFO    Ultrasonic GPIO ready
+2026-04-07 23:38:50,994 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 53.0°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-07 23:38:51,411 [Cam-vehicle         ] INFO    [Cam-vehicle] Camera 0 streaming
+2026-04-07 23:38:51,413 [Cam-driver_cargo    ] INFO    [Cam-driver_cargo] Camera 2 streaming
+2026-04-07 23:38:53,532 [GPSManager          ] INFO    SIM7600G-H detected on /dev/ttyUSB2
+2026-04-07 23:38:57,252 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 53.0°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-07 23:38:58,539 [GPSManager          ] INFO    GPSManager ready — reading NMEA stream
+2026-04-07 23:39:03,636 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 52.8°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-07 23:39:09,894 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 52.4°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-07 23:39:16,152 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 52.1°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-07 23:39:22,411 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 52.3°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-07 23:39:28,669 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 52.4°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-07 23:39:33,542 [Thread-22 (process_request_thread)] ERROR   Exception on / [GET]
+Traceback (most recent call last):
+  File "/home/pathvision/Downloads/JRF_V1/jrf_env/lib/python3.10/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/pathvision/Downloads/JRF_V1/jrf_env/lib/python3.10/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/pathvision/Downloads/JRF_V1/jrf_env/lib/python3.10/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/pathvision/Downloads/JRF_V1/jrf_env/lib/python3.10/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/home/pathvision/Downloads/JRF_V1/dashboard/server.py", line 57, in index
+    return render_template("index.html")
+  File "/home/pathvision/Downloads/JRF_V1/jrf_env/lib/python3.10/site-packages/flask/templating.py", line 150, in render_template
+    template = app.jinja_env.get_or_select_template(template_name_or_list)
+  File "/home/pathvision/Downloads/JRF_V1/jrf_env/lib/python3.10/site-packages/jinja2/environment.py", line 1087, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "/home/pathvision/Downloads/JRF_V1/jrf_env/lib/python3.10/site-packages/jinja2/environment.py", line 1016, in get_template
+    return self._load_template(name, globals)
+  File "/home/pathvision/Downloads/JRF_V1/jrf_env/lib/python3.10/site-packages/jinja2/environment.py", line 975, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "/home/pathvision/Downloads/JRF_V1/jrf_env/lib/python3.10/site-packages/jinja2/loaders.py", line 126, in load
+    source, filename, uptodate = self.get_source(environment, name)
+  File "/home/pathvision/Downloads/JRF_V1/jrf_env/lib/python3.10/site-packages/flask/templating.py", line 66, in get_source
+    return self._get_source_fast(environment, template)
+  File "/home/pathvision/Downloads/JRF_V1/jrf_env/lib/python3.10/site-packages/flask/templating.py", line 100, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: index.html
+2026-04-07 23:39:33,555 [Thread-22 (process_request_thread)] INFO    127.0.0.1 - - [07/Apr/2026 23:39:33] "[35m[1mGET / HTTP/1.1[0m" 500 -
+2026-04-07 23:39:33,663 [Thread-23 (process_request_thread)] INFO    127.0.0.1 - - [07/Apr/2026 23:39:33] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2026-04-07 23:39:34,926 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 52.3°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-07 23:39:41,186 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 52.2°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-07 23:39:47,445 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 52.1°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-07 23:39:51,087 [MainThread          ] INFO    Shutdown signal received …
+2026-04-07 23:39:51,088 [MainThread          ] INFO    Fleet Monitor stopped cleanly.
+2026-04-07 23:40:27,738 [MainThread          ] INFO    ============================================================
+2026-04-07 23:40:27,739 [MainThread          ] INFO      FLEET MONITOR — Jetson Orin Nano
+2026-04-07 23:40:27,739 [MainThread          ] INFO    ============================================================
+2026-04-07 23:40:27,741 [MainThread          ] INFO    Buzzer initialised on GPIO pin 15
+2026-04-07 23:40:27,742 [AlertLogger         ] INFO    AlertLogger started
+2026-04-07 23:40:27,742 [BenchmarkLogger     ] INFO    BenchmarkLogger started
+2026-04-07 23:40:28,789 [MainThread          ] INFO    Camera found at index 0
+2026-04-07 23:40:29,922 [MainThread          ] INFO    Camera found at index 2
+2026-04-07 23:40:30,998 [MainThread          ] INFO    Camera found at index 4
+2026-04-07 23:40:31,002 [MainThread          ] INFO    Detected camera indices: [0, 2, 4]
+2026-04-07 23:40:31,004 [MainThread          ] INFO    CameraReader 'vehicle' started on index 0
+2026-04-07 23:40:31,005 [MainThread          ] INFO    CameraReader 'driver_cargo' started on index 2
+2026-04-07 23:40:31,006 [DrowsinessDetector  ] INFO    DrowsinessDetector starting …
+2026-04-07 23:40:31,007 [CargoDetector       ] INFO    CargoDetector starting …
+2026-04-07 23:40:31,015 [VehicleDetector     ] INFO    VehicleDetector starting …
+2026-04-07 23:40:31,037 [GPSManager          ] INFO    GPSManager: probing for SIM7600G-H …
+2026-04-07 23:40:31,039 [SensorManager       ] INFO    SensorManager starting …
+2026-04-07 23:40:31,039 [MainThread          ] INFO    Dashboard → http://localhost:5000
+2026-04-07 23:40:31,041 [MainThread          ] INFO    Dashboard → http://0.0.0.0:5000
+2026-04-07 23:40:31,057 [MainThread          ] INFO    [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.41.190.52:5000
+2026-04-07 23:40:31,059 [MainThread          ] INFO    [33mPress CTRL+C to quit[0m
+2026-04-07 23:40:31,154 [SensorManager       ] INFO    Ultrasonic GPIO ready
+2026-04-07 23:40:31,168 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 51.9°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-07 23:40:31,476 [Thread-2 (process_request_thread)] ERROR   Exception on / [GET]
+Traceback (most recent call last):
+  File "/home/pathvision/Downloads/JRF_V1/jrf_env/lib/python3.10/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/pathvision/Downloads/JRF_V1/jrf_env/lib/python3.10/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/pathvision/Downloads/JRF_V1/jrf_env/lib/python3.10/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/pathvision/Downloads/JRF_V1/jrf_env/lib/python3.10/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/home/pathvision/Downloads/JRF_V1/dashboard/server.py", line 57, in index
+    return render_template("index.html")
+  File "/home/pathvision/Downloads/JRF_V1/jrf_env/lib/python3.10/site-packages/flask/templating.py", line 150, in render_template
+    template = app.jinja_env.get_or_select_template(template_name_or_list)
+  File "/home/pathvision/Downloads/JRF_V1/jrf_env/lib/python3.10/site-packages/jinja2/environment.py", line 1087, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "/home/pathvision/Downloads/JRF_V1/jrf_env/lib/python3.10/site-packages/jinja2/environment.py", line 1016, in get_template
+    return self._load_template(name, globals)
+  File "/home/pathvision/Downloads/JRF_V1/jrf_env/lib/python3.10/site-packages/jinja2/environment.py", line 975, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "/home/pathvision/Downloads/JRF_V1/jrf_env/lib/python3.10/site-packages/jinja2/loaders.py", line 126, in load
+    source, filename, uptodate = self.get_source(environment, name)
+  File "/home/pathvision/Downloads/JRF_V1/jrf_env/lib/python3.10/site-packages/flask/templating.py", line 66, in get_source
+    return self._get_source_fast(environment, template)
+  File "/home/pathvision/Downloads/JRF_V1/jrf_env/lib/python3.10/site-packages/flask/templating.py", line 100, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: index.html
+2026-04-07 23:40:31,497 [Thread-2 (process_request_thread)] INFO    127.0.0.1 - - [07/Apr/2026 23:40:31] "[35m[1mGET / HTTP/1.1[0m" 500 -
+2026-04-07 23:40:31,569 [Cam-vehicle         ] INFO    [Cam-vehicle] Camera 0 streaming
+2026-04-07 23:40:31,583 [Thread-3 (process_request_thread)] INFO    127.0.0.1 - - [07/Apr/2026 23:40:31] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2026-04-07 23:40:31,638 [Cam-driver_cargo    ] INFO    [Cam-driver_cargo] Camera 2 streaming
+2026-04-07 23:40:32,969 [Thread-4 (process_request_thread)] ERROR   Exception on / [GET]
+Traceback (most recent call last):
+  File "/home/pathvision/Downloads/JRF_V1/jrf_env/lib/python3.10/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/pathvision/Downloads/JRF_V1/jrf_env/lib/python3.10/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/pathvision/Downloads/JRF_V1/jrf_env/lib/python3.10/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/pathvision/Downloads/JRF_V1/jrf_env/lib/python3.10/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/home/pathvision/Downloads/JRF_V1/dashboard/server.py", line 57, in index
+    return render_template("index.html")
+  File "/home/pathvision/Downloads/JRF_V1/jrf_env/lib/python3.10/site-packages/flask/templating.py", line 150, in render_template
+    template = app.jinja_env.get_or_select_template(template_name_or_list)
+  File "/home/pathvision/Downloads/JRF_V1/jrf_env/lib/python3.10/site-packages/jinja2/environment.py", line 1087, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "/home/pathvision/Downloads/JRF_V1/jrf_env/lib/python3.10/site-packages/jinja2/environment.py", line 1016, in get_template
+    return self._load_template(name, globals)
+  File "/home/pathvision/Downloads/JRF_V1/jrf_env/lib/python3.10/site-packages/jinja2/environment.py", line 975, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "/home/pathvision/Downloads/JRF_V1/jrf_env/lib/python3.10/site-packages/jinja2/loaders.py", line 126, in load
+    source, filename, uptodate = self.get_source(environment, name)
+  File "/home/pathvision/Downloads/JRF_V1/jrf_env/lib/python3.10/site-packages/flask/templating.py", line 66, in get_source
+    return self._get_source_fast(environment, template)
+  File "/home/pathvision/Downloads/JRF_V1/jrf_env/lib/python3.10/site-packages/flask/templating.py", line 100, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: index.html
+2026-04-07 23:40:32,974 [Thread-4 (process_request_thread)] INFO    127.0.0.1 - - [07/Apr/2026 23:40:32] "[35m[1mGET / HTTP/1.1[0m" 500 -
+2026-04-07 23:40:33,038 [GPSManager          ] INFO    SIM7600G-H detected on /dev/ttyUSB2
+2026-04-07 23:40:37,428 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 51.7°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-07 23:40:38,045 [GPSManager          ] INFO    GPSManager ready — reading NMEA stream
+2026-04-07 23:40:43,687 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 51.5°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-07 23:42:36,310 [MainThread          ] INFO    ============================================================
+2026-04-07 23:42:36,796 [MainThread          ] INFO      FLEET MONITOR — Jetson Orin Nano
+2026-04-07 23:42:36,797 [MainThread          ] INFO    ============================================================
+2026-04-07 23:42:36,801 [MainThread          ] INFO    Buzzer initialised on GPIO pin 15
+2026-04-07 23:42:36,802 [AlertLogger         ] INFO    AlertLogger started
+2026-04-07 23:42:36,803 [BenchmarkLogger     ] INFO    BenchmarkLogger started
+2026-04-07 23:42:37,901 [MainThread          ] INFO    Camera found at index 0
+2026-04-07 23:42:39,065 [MainThread          ] INFO    Camera found at index 2
+2026-04-07 23:42:40,143 [MainThread          ] INFO    Camera found at index 4
+2026-04-07 23:42:40,147 [MainThread          ] INFO    Detected camera indices: [0, 2, 4]
+2026-04-07 23:42:40,149 [MainThread          ] INFO    CameraReader 'vehicle' started on index 0
+2026-04-07 23:42:40,150 [MainThread          ] INFO    CameraReader 'driver_cargo' started on index 2
+2026-04-07 23:42:40,151 [DrowsinessDetector  ] INFO    DrowsinessDetector starting …
+2026-04-07 23:42:40,151 [CargoDetector       ] INFO    CargoDetector starting …
+2026-04-07 23:42:40,161 [VehicleDetector     ] INFO    VehicleDetector starting …
+2026-04-07 23:42:40,182 [GPSManager          ] INFO    GPSManager: probing for SIM7600G-H …
+2026-04-07 23:42:40,184 [SensorManager       ] INFO    SensorManager starting …
+2026-04-07 23:42:40,184 [MainThread          ] INFO    Dashboard → http://localhost:5000
+2026-04-07 23:42:40,187 [MainThread          ] INFO    Dashboard → http://0.0.0.0:5000
+2026-04-07 23:42:40,195 [MainThread          ] INFO    [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.41.190.52:5000
+2026-04-07 23:42:40,196 [MainThread          ] INFO    [33mPress CTRL+C to quit[0m
+2026-04-07 23:42:40,304 [SensorManager       ] INFO    Ultrasonic GPIO ready
+2026-04-07 23:42:40,323 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 51.2°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-07 23:42:40,695 [Cam-vehicle         ] INFO    [Cam-vehicle] Camera 0 streaming
+2026-04-07 23:42:40,811 [Cam-driver_cargo    ] INFO    [Cam-driver_cargo] Camera 2 streaming
+2026-04-07 23:42:42,159 [GPSManager          ] INFO    SIM7600G-H detected on /dev/ttyUSB2
+2026-04-07 23:42:46,590 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 51.4°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-07 23:42:47,166 [GPSManager          ] INFO    GPSManager ready — reading NMEA stream
+2026-04-07 23:42:48,027 [Thread-5 (process_request_thread)] ERROR   Exception on / [GET]
+Traceback (most recent call last):
+  File "/home/pathvision/Downloads/JRF_V1/jrf_env/lib/python3.10/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/pathvision/Downloads/JRF_V1/jrf_env/lib/python3.10/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/pathvision/Downloads/JRF_V1/jrf_env/lib/python3.10/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/pathvision/Downloads/JRF_V1/jrf_env/lib/python3.10/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/home/pathvision/Downloads/JRF_V1/dashboard/server.py", line 57, in index
+    return render_template("index.html")
+  File "/home/pathvision/Downloads/JRF_V1/jrf_env/lib/python3.10/site-packages/flask/templating.py", line 150, in render_template
+    template = app.jinja_env.get_or_select_template(template_name_or_list)
+  File "/home/pathvision/Downloads/JRF_V1/jrf_env/lib/python3.10/site-packages/jinja2/environment.py", line 1087, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "/home/pathvision/Downloads/JRF_V1/jrf_env/lib/python3.10/site-packages/jinja2/environment.py", line 1016, in get_template
+    return self._load_template(name, globals)
+  File "/home/pathvision/Downloads/JRF_V1/jrf_env/lib/python3.10/site-packages/jinja2/environment.py", line 975, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "/home/pathvision/Downloads/JRF_V1/jrf_env/lib/python3.10/site-packages/jinja2/loaders.py", line 126, in load
+    source, filename, uptodate = self.get_source(environment, name)
+  File "/home/pathvision/Downloads/JRF_V1/jrf_env/lib/python3.10/site-packages/flask/templating.py", line 66, in get_source
+    return self._get_source_fast(environment, template)
+  File "/home/pathvision/Downloads/JRF_V1/jrf_env/lib/python3.10/site-packages/flask/templating.py", line 100, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: index.html
+2026-04-07 23:42:48,031 [Thread-5 (process_request_thread)] INFO    10.41.190.52 - - [07/Apr/2026 23:42:48] "[35m[1mGET / HTTP/1.1[0m" 500 -
+2026-04-07 23:42:48,143 [Thread-6 (process_request_thread)] INFO    10.41.190.52 - - [07/Apr/2026 23:42:48] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2026-04-07 23:42:52,849 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 50.9°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-07 23:42:59,107 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 51.3°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-07 23:43:05,367 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 51.2°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-07 23:43:11,623 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 51.5°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-07 23:43:17,877 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 51.9°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-07 23:43:24,135 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 51.9°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-07 23:43:30,392 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 51.1°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-07 23:43:32,147 [MainThread          ] INFO    Shutdown signal received …
+2026-04-07 23:43:32,148 [MainThread          ] INFO    Fleet Monitor stopped cleanly.
+2026-04-07 23:50:06,273 [MainThread          ] INFO    ============================================================
+2026-04-07 23:50:06,273 [MainThread          ] INFO      FLEET MONITOR — Jetson Orin Nano
+2026-04-07 23:50:06,274 [MainThread          ] INFO    ============================================================
+2026-04-07 23:50:06,276 [MainThread          ] INFO    Buzzer initialised on GPIO pin 15
+2026-04-07 23:50:06,277 [AlertLogger         ] INFO    AlertLogger started
+2026-04-07 23:50:06,277 [BenchmarkLogger     ] INFO    BenchmarkLogger started
+2026-04-07 23:50:07,337 [MainThread          ] INFO    Camera found at index 0
+2026-04-07 23:50:08,407 [MainThread          ] INFO    Camera found at index 2
+2026-04-07 23:50:09,467 [MainThread          ] INFO    Camera found at index 4
+2026-04-07 23:50:09,471 [MainThread          ] INFO    Detected camera indices: [0, 2, 4]
+2026-04-07 23:50:09,472 [MainThread          ] INFO    CameraReader 'vehicle' started on index 0
+2026-04-07 23:50:09,473 [MainThread          ] INFO    CameraReader 'driver_cargo' started on index 2
+2026-04-07 23:50:09,474 [DrowsinessDetector  ] INFO    DrowsinessDetector starting …
+2026-04-07 23:50:09,483 [CargoDetector       ] INFO    CargoDetector starting …
+2026-04-07 23:50:09,492 [VehicleDetector     ] INFO    VehicleDetector starting …
+2026-04-07 23:50:09,495 [GPSManager          ] INFO    GPSManager: probing for SIM7600G-H …
+2026-04-07 23:50:09,496 [SensorManager       ] INFO    SensorManager starting …
+2026-04-07 23:50:09,497 [MainThread          ] INFO    Dashboard → http://localhost:5000
+2026-04-07 23:50:09,499 [MainThread          ] INFO    Dashboard → http://0.0.0.0:5000
+2026-04-07 23:50:09,505 [MainThread          ] INFO    [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.41.190.52:5000
+2026-04-07 23:50:09,505 [MainThread          ] INFO    [33mPress CTRL+C to quit[0m
+2026-04-07 23:50:09,611 [SensorManager       ] INFO    Ultrasonic GPIO ready
+2026-04-07 23:50:09,623 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 50.6°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-07 23:50:10,026 [Cam-driver_cargo    ] INFO    [Cam-driver_cargo] Camera 2 streaming
+2026-04-07 23:50:10,027 [Cam-vehicle         ] INFO    [Cam-vehicle] Camera 0 streaming
+2026-04-07 23:50:11,419 [GPSManager          ] INFO    SIM7600G-H detected on /dev/ttyUSB2
+2026-04-07 23:50:15,883 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 50.1°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-07 23:50:16,427 [GPSManager          ] INFO    GPSManager ready — reading NMEA stream
+2026-04-07 23:50:22,142 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 50.2°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-07 23:50:28,400 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 50.1°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-07 23:50:28,919 [Thread-11 (process_request_thread)] INFO    10.41.190.52 - - [07/Apr/2026 23:50:28] "GET / HTTP/1.1" 200 -
+2026-04-07 23:50:29,011 [Thread-12 (process_request_thread)] INFO    10.41.190.52 - - [07/Apr/2026 23:50:29] "GET /video/vehicle HTTP/1.1" 200 -
+2026-04-07 23:50:29,011 [Thread-13 (process_request_thread)] INFO    10.41.190.52 - - [07/Apr/2026 23:50:29] "GET /video/driver_cargo HTTP/1.1" 200 -
+2026-04-07 23:50:30,262 [Thread-14 (process_request_thread)] INFO    10.41.190.52 - - [07/Apr/2026 23:50:30] "GET /socket.io/?EIO=4&transport=polling&t=PrfBBAb HTTP/1.1" 200 -
+2026-04-07 23:50:30,312 [Thread-17 (process_request_thread)] INFO    10.41.190.52 - - [07/Apr/2026 23:50:30] "POST /socket.io/?EIO=4&transport=polling&t=PrfBBBI&sid=j4YxpI0997w1yITSAAAA HTTP/1.1" 200 -
+2026-04-07 23:50:30,319 [Thread-19 (process_request_thread)] INFO    10.41.190.52 - - [07/Apr/2026 23:50:30] "GET /socket.io/?EIO=4&transport=polling&t=PrfBBBL&sid=j4YxpI0997w1yITSAAAA HTTP/1.1" 200 -
+2026-04-07 23:50:30,338 [Thread-21 (process_request_thread)] INFO    10.41.190.52 - - [07/Apr/2026 23:50:30] "GET /socket.io/?EIO=4&transport=polling&t=PrfBBBy&sid=j4YxpI0997w1yITSAAAA HTTP/1.1" 200 -
+2026-04-07 23:50:34,659 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 50.2°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-07 23:50:40,919 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 50.5°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-07 23:50:47,175 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 50.7°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-07 23:50:53,435 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 50.7°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-07 23:50:59,688 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 51.2°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-07 23:51:05,949 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 51.2°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-07 23:51:12,211 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 51.1°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:04:37,366 [MainThread          ] INFO    ============================================================
+2026-04-08 00:04:37,372 [MainThread          ] INFO      FLEET MONITOR — Jetson Orin Nano
+2026-04-08 00:04:37,372 [MainThread          ] INFO    ============================================================
+2026-04-08 00:04:37,374 [MainThread          ] INFO    Buzzer initialised on GPIO pin 15
+2026-04-08 00:04:37,375 [AlertLogger         ] INFO    AlertLogger started
+2026-04-08 00:04:37,376 [BenchmarkLogger     ] INFO    BenchmarkLogger started
+2026-04-08 00:04:38,509 [MainThread          ] INFO    Camera found at index 0
+2026-04-08 00:04:39,641 [MainThread          ] INFO    Camera found at index 2
+2026-04-08 00:04:40,702 [MainThread          ] INFO    Camera found at index 4
+2026-04-08 00:04:40,706 [MainThread          ] INFO    Detected camera indices: [0, 2, 4]
+2026-04-08 00:04:40,708 [MainThread          ] INFO    CameraReader 'vehicle' started on index 0
+2026-04-08 00:04:40,709 [MainThread          ] INFO    CameraReader 'driver_cargo' started on index 2
+2026-04-08 00:04:40,710 [DrowsinessDetector  ] INFO    DrowsinessDetector starting …
+2026-04-08 00:04:40,711 [CargoDetector       ] INFO    CargoDetector starting …
+2026-04-08 00:04:40,711 [VehicleDetector     ] INFO    VehicleDetector starting …
+2026-04-08 00:04:40,726 [GPSManager          ] INFO    GPSManager: probing for SIM7600G-H …
+2026-04-08 00:04:40,735 [SensorManager       ] INFO    SensorManager starting …
+2026-04-08 00:04:40,738 [MainThread          ] INFO    Dashboard → http://localhost:5000
+2026-04-08 00:04:40,740 [MainThread          ] INFO    Dashboard → http://0.0.0.0:5000
+2026-04-08 00:04:40,762 [MainThread          ] INFO    [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.41.190.52:5000
+2026-04-08 00:04:40,763 [MainThread          ] INFO    [33mPress CTRL+C to quit[0m
+2026-04-08 00:04:40,842 [SensorManager       ] INFO    Ultrasonic GPIO ready
+2026-04-08 00:04:40,860 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 50.6°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:04:41,525 [Cam-driver_cargo    ] INFO    [Cam-driver_cargo] Camera 2 streaming
+2026-04-08 00:04:41,525 [Cam-vehicle         ] INFO    [Cam-vehicle] Camera 0 streaming
+2026-04-08 00:04:43,367 [GPSManager          ] INFO    SIM7600G-H detected on /dev/ttyUSB2
+2026-04-08 00:04:44,970 [Thread-3 (process_request_thread)] INFO    10.41.190.52 - - [08/Apr/2026 00:04:44] "GET /socket.io/?EIO=4&transport=polling&t=PrfERrV HTTP/1.1" 200 -
+2026-04-08 00:04:44,992 [Thread-6 (process_request_thread)] INFO    10.41.190.52 - - [08/Apr/2026 00:04:44] "POST /socket.io/?EIO=4&transport=polling&t=PrfERro&sid=YsQoRItMnoYryGKpAAAA HTTP/1.1" 200 -
+2026-04-08 00:04:44,997 [Thread-8 (process_request_thread)] INFO    10.41.190.52 - - [08/Apr/2026 00:04:44] "GET /socket.io/?EIO=4&transport=polling&t=PrfERrr&sid=YsQoRItMnoYryGKpAAAA HTTP/1.1" 200 -
+2026-04-08 00:04:47,139 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 50.2°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:04:48,374 [GPSManager          ] INFO    GPSManager ready — reading NMEA stream
+2026-04-08 00:04:52,082 [MainThread          ] INFO    Shutdown signal received …
+2026-04-08 00:04:52,084 [MainThread          ] INFO    Fleet Monitor stopped cleanly.
+2026-04-08 00:06:46,584 [MainThread          ] INFO    ============================================================
+2026-04-08 00:06:46,584 [MainThread          ] INFO      FLEET MONITOR — Jetson Orin Nano
+2026-04-08 00:06:46,585 [MainThread          ] INFO    ============================================================
+2026-04-08 00:06:46,587 [MainThread          ] INFO    Buzzer initialised on GPIO pin 15
+2026-04-08 00:06:46,588 [AlertLogger         ] INFO    AlertLogger started
+2026-04-08 00:06:46,588 [BenchmarkLogger     ] INFO    BenchmarkLogger started
+2026-04-08 00:06:47,708 [MainThread          ] INFO    Camera found at index 0
+2026-04-08 00:06:48,836 [MainThread          ] INFO    Camera found at index 2
+2026-04-08 00:06:49,863 [MainThread          ] INFO    Camera found at index 4
+2026-04-08 00:06:49,867 [MainThread          ] INFO    Detected camera indices: [0, 2, 4]
+2026-04-08 00:06:49,869 [MainThread          ] INFO    CameraReader 'vehicle' started on index 0
+2026-04-08 00:06:49,869 [MainThread          ] INFO    CameraReader 'driver_cargo' started on index 2
+2026-04-08 00:06:49,870 [DrowsinessDetector  ] INFO    DrowsinessDetector starting …
+2026-04-08 00:06:49,871 [CargoDetector       ] INFO    CargoDetector starting …
+2026-04-08 00:06:49,879 [VehicleDetector     ] INFO    VehicleDetector starting …
+2026-04-08 00:06:49,893 [GPSManager          ] INFO    GPSManager: probing for SIM7600G-H …
+2026-04-08 00:06:49,895 [SensorManager       ] INFO    SensorManager starting …
+2026-04-08 00:06:49,895 [MainThread          ] INFO    Dashboard → http://localhost:5000
+2026-04-08 00:06:49,902 [MainThread          ] INFO    Dashboard → http://0.0.0.0:5000
+2026-04-08 00:06:49,916 [MainThread          ] INFO    [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.41.190.52:5000
+2026-04-08 00:06:49,917 [MainThread          ] INFO    [33mPress CTRL+C to quit[0m
+2026-04-08 00:06:50,061 [SensorManager       ] INFO    Ultrasonic GPIO ready
+2026-04-08 00:06:50,076 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 50.7°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:06:50,622 [Cam-vehicle         ] INFO    [Cam-vehicle] Camera 0 streaming
+2026-04-08 00:06:50,623 [Cam-driver_cargo    ] INFO    [Cam-driver_cargo] Camera 2 streaming
+2026-04-08 00:06:51,232 [Thread-2 (process_request_thread)] INFO    10.41.190.52 - - [08/Apr/2026 00:06:51] "GET /socket.io/?EIO=4&transport=polling&t=PrfEwgK HTTP/1.1" 200 -
+2026-04-08 00:06:51,256 [Thread-5 (process_request_thread)] INFO    10.41.190.52 - - [08/Apr/2026 00:06:51] "POST /socket.io/?EIO=4&transport=polling&t=PrfEwgd&sid=W6yK_2g2OnHoPZzjAAAA HTTP/1.1" 200 -
+2026-04-08 00:06:51,261 [Thread-7 (process_request_thread)] INFO    10.41.190.52 - - [08/Apr/2026 00:06:51] "GET /socket.io/?EIO=4&transport=polling&t=PrfEwge&sid=W6yK_2g2OnHoPZzjAAAA HTTP/1.1" 200 -
+2026-04-08 00:06:52,255 [GPSManager          ] INFO    SIM7600G-H detected on /dev/ttyUSB2
+2026-04-08 00:06:56,240 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 50.4°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:07:40,643 [MainThread          ] INFO    ============================================================
+2026-04-08 00:07:40,643 [MainThread          ] INFO      FLEET MONITOR — Jetson Orin Nano
+2026-04-08 00:07:40,643 [MainThread          ] INFO    ============================================================
+2026-04-08 00:07:40,646 [MainThread          ] INFO    Buzzer initialised on GPIO pin 15
+2026-04-08 00:07:40,647 [AlertLogger         ] INFO    AlertLogger started
+2026-04-08 00:07:40,648 [BenchmarkLogger     ] INFO    BenchmarkLogger started
+2026-04-08 00:07:41,672 [MainThread          ] INFO    Camera found at index 0
+2026-04-08 00:07:42,856 [MainThread          ] INFO    Camera found at index 2
+2026-04-08 00:07:43,932 [MainThread          ] INFO    Camera found at index 4
+2026-04-08 00:07:43,936 [MainThread          ] INFO    Detected camera indices: [0, 2, 4]
+2026-04-08 00:07:43,937 [MainThread          ] INFO    CameraReader 'vehicle' started on index 0
+2026-04-08 00:07:43,938 [MainThread          ] INFO    CameraReader 'driver_cargo' started on index 2
+2026-04-08 00:07:43,939 [DrowsinessDetector  ] INFO    DrowsinessDetector starting …
+2026-04-08 00:07:43,939 [CargoDetector       ] INFO    CargoDetector starting …
+2026-04-08 00:07:43,956 [VehicleDetector     ] INFO    VehicleDetector starting …
+2026-04-08 00:07:43,959 [GPSManager          ] INFO    GPSManager: probing for SIM7600G-H …
+2026-04-08 00:07:43,966 [SensorManager       ] INFO    SensorManager starting …
+2026-04-08 00:07:43,967 [MainThread          ] INFO    Dashboard → http://localhost:5000
+2026-04-08 00:07:43,971 [MainThread          ] INFO    Dashboard → http://0.0.0.0:5000
+2026-04-08 00:07:43,985 [MainThread          ] INFO    [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.41.190.52:5000
+2026-04-08 00:07:43,986 [MainThread          ] INFO    [33mPress CTRL+C to quit[0m
+2026-04-08 00:07:44,089 [SensorManager       ] INFO    Ultrasonic GPIO ready
+2026-04-08 00:07:44,103 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 51.1°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:07:44,725 [Cam-driver_cargo    ] INFO    [Cam-driver_cargo] Camera 2 streaming
+2026-04-08 00:07:44,725 [Cam-vehicle         ] INFO    [Cam-vehicle] Camera 0 streaming
+2026-04-08 00:07:45,040 [DrowsinessDetector  ] INFO    DrowsinessDetector ready
+2026-04-08 00:07:45,045 [VehicleDetector     ] INFO    VehicleDetector ready
+2026-04-08 00:07:45,047 [CargoDetector       ] INFO    CargoDetector ready — waiting for cargo mode
+2026-04-08 00:07:45,181 [Thread-2 (process_request_thread)] INFO    10.41.190.52 - - [08/Apr/2026 00:07:45] "GET / HTTP/1.1" 200 -
+2026-04-08 00:07:45,282 [Thread-3 (process_request_thread)] INFO    10.41.190.52 - - [08/Apr/2026 00:07:45] "GET /video/vehicle HTTP/1.1" 200 -
+2026-04-08 00:07:45,284 [Thread-4 (process_request_thread)] INFO    10.41.190.52 - - [08/Apr/2026 00:07:45] "GET /video/driver_cargo HTTP/1.1" 200 -
+2026-04-08 00:07:45,375 [Thread-5 (process_request_thread)] INFO    10.41.190.52 - - [08/Apr/2026 00:07:45] "GET /socket.io/?EIO=4&transport=polling&t=PrfF7uE HTTP/1.1" 200 -
+2026-04-08 00:07:45,438 [Thread-8 (process_request_thread)] INFO    10.41.190.52 - - [08/Apr/2026 00:07:45] "POST /socket.io/?EIO=4&transport=polling&t=PrfF7v1&sid=4Ck_rIIMqpFcWZ1iAAAA HTTP/1.1" 200 -
+2026-04-08 00:07:45,444 [Thread-11 (process_request_thread)] INFO    10.41.190.52 - - [08/Apr/2026 00:07:45] "GET /socket.io/?EIO=4&transport=polling&t=PrfF7v5&sid=4Ck_rIIMqpFcWZ1iAAAA HTTP/1.1" 200 -
+2026-04-08 00:07:45,471 [Thread-12 (process_request_thread)] INFO    10.41.190.52 - - [08/Apr/2026 00:07:45] "GET /socket.io/?EIO=4&transport=polling&t=PrfF7vr&sid=4Ck_rIIMqpFcWZ1iAAAA HTTP/1.1" 200 -
+2026-04-08 00:07:46,044 [GPSManager          ] INFO    SIM7600G-H detected on /dev/ttyUSB2
+2026-04-08 00:07:50,348 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 51.4°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:07:50,848 [AlertLogger         ] WARNING [ALERT] HEAD_DISTRACTION | driver_camera | Yaw=-8671.2° | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:07:51,050 [GPSManager          ] INFO    GPSManager ready — reading NMEA stream
+2026-04-08 00:07:55,890 [AlertLogger         ] WARNING [ALERT] HEAD_DISTRACTION | driver_camera | Yaw=-8830.5° | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:07:56,605 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 52.1°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:08:00,915 [AlertLogger         ] WARNING [ALERT] HEAD_DISTRACTION | driver_camera | Yaw=406.4° | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:08:02,860 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 52.2°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:08:04,070 [AlertLogger         ] WARNING [ALERT] PERSON_IN_CARGO | cargo_camera | conf=0.88 | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:08:09,113 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 52.6°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:08:09,186 [AlertLogger         ] WARNING [ALERT] PERSON_IN_CARGO | cargo_camera | conf=0.88 | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:08:14,227 [AlertLogger         ] WARNING [ALERT] PERSON_IN_CARGO | cargo_camera | conf=0.83 | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:08:15,371 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 52.5°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:08:19,178 [CargoDetector       ] INFO    Cargo baseline: {56: 1}
+2026-04-08 00:08:19,673 [AlertLogger         ] WARNING [ALERT] PERSON_IN_CARGO | cargo_camera | conf=0.87 | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:08:21,627 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 52.5°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:08:24,690 [AlertLogger         ] WARNING [ALERT] PERSON_IN_CARGO | cargo_camera | conf=0.86 | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:08:26,685 [AlertLogger         ] WARNING [ALERT] HEAD_DISTRACTION | driver_camera | Yaw=-10465.3° | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:08:27,887 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 52.8°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:08:31,693 [AlertLogger         ] WARNING [ALERT] HEAD_DISTRACTION | driver_camera | Yaw=11561.8° | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:08:34,141 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 53.1°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:08:37,186 [AlertLogger         ] WARNING [ALERT] PERSON_IN_CARGO | cargo_camera | conf=0.89 | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:08:40,396 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 53.1°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:08:42,552 [AlertLogger         ] WARNING [ALERT] PERSON_IN_CARGO | cargo_camera | conf=0.90 | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:08:46,650 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 53.5°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:08:47,934 [AlertLogger         ] WARNING [ALERT] PERSON_IN_CARGO | cargo_camera | conf=0.83 | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:08:52,329 [CargoDetector       ] INFO    Cargo baseline: {56: 1}
+2026-04-08 00:08:58,046 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 53.6°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:08:58,047 [AlertLogger         ] WARNING [ALERT] PERSON_IN_CARGO | cargo_camera | conf=0.91 | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:08:58,047 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 53.8°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:08:58,141 [AlertLogger         ] WARNING [ALERT] HEAD_DISTRACTION | driver_camera | Yaw=382.3° | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:09:03,337 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 53.8°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:09:03,472 [AlertLogger         ] WARNING [ALERT] HEAD_DISTRACTION | driver_camera | Yaw=4205.9° | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:09:08,579 [AlertLogger         ] WARNING [ALERT] HEAD_DISTRACTION | driver_camera | Yaw=4659.7° | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:09:09,598 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 53.8°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:09:13,583 [AlertLogger         ] WARNING [ALERT] HEAD_DISTRACTION | driver_camera | Yaw=4585.7° | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:09:15,854 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 54.1°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:09:19,086 [AlertLogger         ] WARNING [ALERT] HEAD_DISTRACTION | driver_camera | Yaw=-14945.8° | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:09:22,108 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 54.1°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:09:24,167 [AlertLogger         ] WARNING [ALERT] HEAD_DISTRACTION | driver_camera | Yaw=-2731.0° | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:09:28,365 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 54.6°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:09:29,321 [AlertLogger         ] WARNING [ALERT] HEAD_DISTRACTION | driver_camera | Yaw=1572.2° | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:09:35,322 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 54.1°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:09:35,323 [AlertLogger         ] WARNING [ALERT] HEAD_DISTRACTION | driver_camera | Yaw=-4297.5° | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:09:40,773 [AlertLogger         ] WARNING [ALERT] HEAD_DISTRACTION | driver_camera | Yaw=-254.9° | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:09:40,883 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 54.4°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:09:45,846 [AlertLogger         ] WARNING [ALERT] HEAD_DISTRACTION | driver_camera | Yaw=-3965.1° | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:09:47,140 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 54.7°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:09:50,945 [AlertLogger         ] WARNING [ALERT] HEAD_DISTRACTION | driver_camera | Yaw=-3529.1° | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:09:53,396 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 54.6°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:09:55,958 [AlertLogger         ] WARNING [ALERT] HEAD_DISTRACTION | driver_camera | Yaw=1983.8° | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:09:59,651 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 54.4°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:10:01,132 [AlertLogger         ] WARNING [ALERT] HEAD_DISTRACTION | driver_camera | Yaw=1839.9° | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:10:05,908 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 54.8°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:10:06,219 [AlertLogger         ] WARNING [ALERT] HEAD_DISTRACTION | driver_camera | Yaw=1835.4° | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:10:11,277 [AlertLogger         ] WARNING [ALERT] HEAD_DISTRACTION | driver_camera | Yaw=1395.1° | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:10:12,168 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 54.8°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:10:16,340 [AlertLogger         ] WARNING [ALERT] HEAD_DISTRACTION | driver_camera | Yaw=5679.7° | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:10:18,422 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 54.6°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:10:21,485 [AlertLogger         ] WARNING [ALERT] HEAD_DISTRACTION | driver_camera | Yaw=5736.1° | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:10:24,677 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 54.6°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:10:26,648 [AlertLogger         ] WARNING [ALERT] HEAD_DISTRACTION | driver_camera | Yaw=4710.4° | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:10:30,935 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 54.7°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:10:31,723 [AlertLogger         ] WARNING [ALERT] HEAD_DISTRACTION | driver_camera | Yaw=-7791.2° | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:10:37,189 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 54.5°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:10:37,225 [AlertLogger         ] WARNING [ALERT] HEAD_DISTRACTION | driver_camera | Yaw=5940.3° | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:10:40,286 [AlertLogger         ] WARNING [ALERT] PERSON_IN_CARGO | cargo_camera | conf=0.80 | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:10:42,277 [AlertLogger         ] WARNING [ALERT] HEAD_DISTRACTION | driver_camera | Yaw=5614.9° | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:10:43,444 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 54.8°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:10:47,289 [AlertLogger         ] WARNING [ALERT] HEAD_DISTRACTION | driver_camera | Yaw=-4195.3° | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:10:49,702 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 55.3°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:10:52,788 [AlertLogger         ] WARNING [ALERT] HEAD_DISTRACTION | driver_camera | Yaw=-3025.1° | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:10:55,959 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 55.1°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:10:57,881 [AlertLogger         ] WARNING [ALERT] HEAD_DISTRACTION | driver_camera | Yaw=9087.1° | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:11:02,215 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 54.8°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:11:02,932 [AlertLogger         ] WARNING [ALERT] HEAD_DISTRACTION | driver_camera | Yaw=-1697.8° | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:11:07,971 [AlertLogger         ] WARNING [ALERT] HEAD_DISTRACTION | driver_camera | Yaw=2209.1° | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:11:08,469 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 55.1°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:11:13,008 [AlertLogger         ] WARNING [ALERT] HEAD_DISTRACTION | driver_camera | Yaw=-3844.6° | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:11:14,729 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 55.2°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:11:18,119 [AlertLogger         ] WARNING [ALERT] HEAD_DISTRACTION | driver_camera | Yaw=-5664.4° | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:11:20,990 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 55.2°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:11:23,217 [AlertLogger         ] WARNING [ALERT] HEAD_DISTRACTION | driver_camera | Yaw=5855.8° | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:11:27,245 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 55.0°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:11:28,376 [AlertLogger         ] WARNING [ALERT] HEAD_DISTRACTION | driver_camera | Yaw=4493.0° | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:11:33,499 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 55.2°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:11:33,506 [AlertLogger         ] WARNING [ALERT] HEAD_DISTRACTION | driver_camera | Yaw=-2454.1° | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:11:38,651 [AlertLogger         ] WARNING [ALERT] HEAD_DISTRACTION | driver_camera | Yaw=-3329.7° | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:11:39,761 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 55.0°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:11:43,789 [AlertLogger         ] WARNING [ALERT] HEAD_DISTRACTION | driver_camera | Yaw=-4260.7° | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:11:46,019 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 55.0°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:11:49,084 [AlertLogger         ] WARNING [ALERT] HEAD_DISTRACTION | driver_camera | Yaw=2653.4° | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:11:50,329 [Thread-749 (process_request_thread)] INFO    10.41.190.52 - - [08/Apr/2026 00:11:50] "GET / HTTP/1.1" 200 -
+2026-04-08 00:11:50,360 [Thread-9 (process_request_thread)] INFO    10.41.190.52 - - [08/Apr/2026 00:11:50] "GET /socket.io/?EIO=4&transport=websocket&sid=4Ck_rIIMqpFcWZ1iAAAA HTTP/1.1" 200 -
+2026-04-08 00:11:50,423 [Thread-750 (process_request_thread)] INFO    10.41.190.52 - - [08/Apr/2026 00:11:50] "GET /video/vehicle HTTP/1.1" 200 -
+2026-04-08 00:11:50,432 [Thread-752 (process_request_thread)] INFO    10.41.190.52 - - [08/Apr/2026 00:11:50] "GET /socket.io/?EIO=4&transport=polling&t=PrfG3jM HTTP/1.1" 200 -
+2026-04-08 00:11:50,440 [Thread-751 (process_request_thread)] INFO    10.41.190.52 - - [08/Apr/2026 00:11:50] "GET /video/driver_cargo HTTP/1.1" 200 -
+2026-04-08 00:11:50,469 [Thread-754 (process_request_thread)] INFO    10.41.190.52 - - [08/Apr/2026 00:11:50] "POST /socket.io/?EIO=4&transport=polling&t=PrfG3ju&sid=nhi85Mt0jkn66rs_AAAC HTTP/1.1" 200 -
+2026-04-08 00:11:50,470 [Thread-756 (process_request_thread)] INFO    10.41.190.52 - - [08/Apr/2026 00:11:50] "GET /socket.io/?EIO=4&transport=polling&t=PrfG3jw&sid=nhi85Mt0jkn66rs_AAAC HTTP/1.1" 200 -
+2026-04-08 00:11:52,274 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 55.1°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:11:54,570 [AlertLogger         ] WARNING [ALERT] HEAD_DISTRACTION | driver_camera | Yaw=-2311.9° | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:11:58,528 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 55.1°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:11:59,707 [AlertLogger         ] WARNING [ALERT] HEAD_DISTRACTION | driver_camera | Yaw=-4589.2° | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:12:04,784 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 55.6°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:12:05,285 [AlertLogger         ] WARNING [ALERT] HEAD_DISTRACTION | driver_camera | Yaw=1393.2° | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:12:10,404 [AlertLogger         ] WARNING [ALERT] HEAD_DISTRACTION | driver_camera | Yaw=66.2° | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:12:11,041 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 55.2°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:12:15,558 [AlertLogger         ] WARNING [ALERT] HEAD_DISTRACTION | driver_camera | Yaw=-1494.6° | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:12:17,295 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 55.7°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:12:20,609 [AlertLogger         ] WARNING [ALERT] HEAD_DISTRACTION | driver_camera | Yaw=-10990.2° | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:12:23,554 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 55.5°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:12:27,188 [AlertLogger         ] WARNING [ALERT] HEAD_DISTRACTION | driver_camera | Yaw=-10659.9° | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:12:29,811 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 55.2°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:12:31,143 [AlertLogger         ] WARNING [ALERT] HEAD_DISTRACTION | driver_camera | Yaw=51.2° | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:12:36,066 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 55.1°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:12:36,638 [AlertLogger         ] WARNING [ALERT] HEAD_DISTRACTION | driver_camera | Yaw=-2160.9° | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:12:41,706 [AlertLogger         ] WARNING [ALERT] HEAD_DISTRACTION | driver_camera | Yaw=6572.3° | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:12:42,321 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 55.4°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:12:46,805 [AlertLogger         ] WARNING [ALERT] HEAD_DISTRACTION | driver_camera | Yaw=-235.7° | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:12:48,576 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 55.2°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:12:51,897 [AlertLogger         ] WARNING [ALERT] HEAD_DISTRACTION | driver_camera | Yaw=-6048.1° | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:12:54,829 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 55.6°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:12:57,081 [AlertLogger         ] WARNING [ALERT] HEAD_DISTRACTION | driver_camera | Yaw=-3111.1° | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:13:01,084 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 55.3°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:13:02,214 [AlertLogger         ] WARNING [ALERT] HEAD_DISTRACTION | driver_camera | Yaw=-3138.7° | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:13:07,340 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 55.3°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:13:07,612 [AlertLogger         ] WARNING [ALERT] HEAD_DISTRACTION | driver_camera | Yaw=-603.9° | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:13:12,692 [AlertLogger         ] WARNING [ALERT] HEAD_DISTRACTION | driver_camera | Yaw=-8376.4° | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:13:13,594 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 55.4°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:13:17,710 [AlertLogger         ] WARNING [ALERT] HEAD_DISTRACTION | driver_camera | Yaw=-11653.6° | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:13:19,847 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 55.1°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:13:23,132 [AlertLogger         ] WARNING [ALERT] HEAD_DISTRACTION | driver_camera | Yaw=-5168.4° | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:13:26,101 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 55.1°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:13:27,720 [MainThread          ] INFO    Shutdown signal received …
+2026-04-08 00:13:27,720 [MainThread          ] INFO    Fleet Monitor stopped cleanly.
+2026-04-08 00:15:10,403 [MainThread          ] INFO    ============================================================
+2026-04-08 00:15:10,403 [MainThread          ] INFO      FLEET MONITOR — Jetson Orin Nano
+2026-04-08 00:15:10,403 [MainThread          ] INFO    ============================================================
+2026-04-08 00:15:10,406 [MainThread          ] INFO    Buzzer initialised on GPIO pin 15
+2026-04-08 00:15:10,406 [AlertLogger         ] INFO    AlertLogger started
+2026-04-08 00:15:10,407 [BenchmarkLogger     ] INFO    BenchmarkLogger started
+2026-04-08 00:15:11,545 [MainThread          ] INFO    Camera found at index 0
+2026-04-08 00:15:12,628 [MainThread          ] INFO    Camera found at index 2
+2026-04-08 00:15:13,787 [MainThread          ] INFO    Camera found at index 4
+2026-04-08 00:15:13,790 [MainThread          ] INFO    Detected camera indices: [0, 2, 4]
+2026-04-08 00:15:13,792 [MainThread          ] INFO    CameraReader 'vehicle' started on index 0
+2026-04-08 00:15:13,793 [MainThread          ] INFO    CameraReader 'driver_cargo' started on index 2
+2026-04-08 00:15:13,793 [DrowsinessDetector  ] INFO    DrowsinessDetector starting …
+2026-04-08 00:15:13,794 [CargoDetector       ] INFO    CargoDetector starting …
+2026-04-08 00:15:13,812 [VehicleDetector     ] INFO    VehicleDetector starting …
+2026-04-08 00:15:13,817 [GPSManager          ] INFO    GPSManager: probing for SIM7600G-H …
+2026-04-08 00:15:13,817 [SensorManager       ] INFO    SensorManager starting …
+2026-04-08 00:15:13,818 [MainThread          ] INFO    Dashboard → http://localhost:5000
+2026-04-08 00:15:13,820 [MainThread          ] INFO    Dashboard → http://0.0.0.0:5000
+2026-04-08 00:15:13,826 [MainThread          ] INFO    [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.41.190.52:5000
+2026-04-08 00:15:13,833 [MainThread          ] INFO    [33mPress CTRL+C to quit[0m
+2026-04-08 00:15:13,927 [SensorManager       ] INFO    Ultrasonic GPIO ready
+2026-04-08 00:15:13,948 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 51.9°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:15:14,506 [Cam-driver_cargo    ] INFO    [Cam-driver_cargo] Camera 2 streaming
+2026-04-08 00:15:14,507 [Cam-vehicle         ] INFO    [Cam-vehicle] Camera 0 streaming
+2026-04-08 00:15:14,784 [CargoDetector       ] INFO    CargoDetector ready — waiting for cargo mode
+2026-04-08 00:15:14,787 [DrowsinessDetector  ] INFO    DrowsinessDetector ready
+2026-04-08 00:15:14,798 [VehicleDetector     ] INFO    VehicleDetector ready
+2026-04-08 00:15:15,510 [AlertLogger         ] WARNING [ALERT] HEAD_DISTRACTION | driver_camera | Yaw=-7002.2° | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:15:15,821 [GPSManager          ] INFO    SIM7600G-H detected on /dev/ttyUSB2
+2026-04-08 00:15:17,482 [Thread-8 (process_request_thread)] INFO    10.41.190.52 - - [08/Apr/2026 00:15:17] "GET / HTTP/1.1" 200 -
+2026-04-08 00:15:17,551 [Thread-9 (process_request_thread)] INFO    10.41.190.52 - - [08/Apr/2026 00:15:17] "GET /video/vehicle HTTP/1.1" 200 -
+2026-04-08 00:15:17,552 [Thread-10 (process_request_thread)] INFO    10.41.190.52 - - [08/Apr/2026 00:15:17] "GET /video/driver_cargo HTTP/1.1" 200 -
+2026-04-08 00:15:17,585 [Thread-11 (process_request_thread)] INFO    10.41.190.52 - - [08/Apr/2026 00:15:17] "GET /socket.io/?EIO=4&transport=polling&t=PrfGsI9 HTTP/1.1" 200 -
+2026-04-08 00:15:17,632 [Thread-14 (process_request_thread)] INFO    10.41.190.52 - - [08/Apr/2026 00:15:17] "POST /socket.io/?EIO=4&transport=polling&t=PrfGsIn&sid=OnJqqLiwDLZ3-EJxAAAA HTTP/1.1" 200 -
+2026-04-08 00:15:17,654 [Thread-18 (process_request_thread)] INFO    10.41.190.52 - - [08/Apr/2026 00:15:17] "GET /socket.io/?EIO=4&transport=polling&t=PrfGsIv&sid=OnJqqLiwDLZ3-EJxAAAA HTTP/1.1" 200 -
+2026-04-08 00:15:17,703 [Thread-19 (process_request_thread)] INFO    10.41.190.52 - - [08/Apr/2026 00:15:17] "GET /socket.io/?EIO=4&transport=polling&t=PrfGsJf&sid=OnJqqLiwDLZ3-EJxAAAA HTTP/1.1" 200 -
+2026-04-08 00:15:20,088 [Thread-26 (process_request_thread)] INFO    10.41.190.52 - - [08/Apr/2026 00:15:20] "GET / HTTP/1.1" 200 -
+2026-04-08 00:15:20,112 [Thread-15 (process_request_thread)] INFO    10.41.190.52 - - [08/Apr/2026 00:15:20] "GET /socket.io/?EIO=4&transport=websocket&sid=OnJqqLiwDLZ3-EJxAAAA HTTP/1.1" 200 -
+2026-04-08 00:15:20,120 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 53.0°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:15:20,176 [Thread-29 (process_request_thread)] INFO    10.41.190.52 - - [08/Apr/2026 00:15:20] "GET /video/driver_cargo HTTP/1.1" 200 -
+2026-04-08 00:15:20,180 [Thread-28 (process_request_thread)] INFO    10.41.190.52 - - [08/Apr/2026 00:15:20] "GET /video/vehicle HTTP/1.1" 200 -
+2026-04-08 00:15:20,184 [Thread-30 (process_request_thread)] INFO    10.41.190.52 - - [08/Apr/2026 00:15:20] "GET /socket.io/?EIO=4&transport=polling&t=PrfGswi HTTP/1.1" 200 -
+2026-04-08 00:15:20,225 [Thread-32 (process_request_thread)] INFO    10.41.190.52 - - [08/Apr/2026 00:15:20] "POST /socket.io/?EIO=4&transport=polling&t=PrfGsxB&sid=1bfpunra5COl3itTAAAC HTTP/1.1" 200 -
+2026-04-08 00:15:20,230 [Thread-34 (process_request_thread)] INFO    10.41.190.52 - - [08/Apr/2026 00:15:20] "GET /socket.io/?EIO=4&transport=polling&t=PrfGsxF&sid=1bfpunra5COl3itTAAAC HTTP/1.1" 200 -
+2026-04-08 00:15:20,804 [AlertLogger         ] WARNING [ALERT] HEAD_DISTRACTION | driver_camera | Yaw=2230.3° | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:15:20,826 [GPSManager          ] INFO    GPSManager ready — reading NMEA stream
+2026-04-08 00:15:26,107 [AlertLogger         ] WARNING [ALERT] HEAD_DISTRACTION | driver_camera | Yaw=-9814.3° | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:15:26,375 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 52.8°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:17:04,284 [MainThread          ] INFO    ============================================================
+2026-04-08 00:17:04,284 [MainThread          ] INFO      FLEET MONITOR — Jetson Orin Nano
+2026-04-08 00:17:04,285 [MainThread          ] INFO    ============================================================
+2026-04-08 00:17:04,287 [MainThread          ] INFO    Buzzer initialised on GPIO pin 15
+2026-04-08 00:17:04,288 [AlertLogger         ] INFO    AlertLogger started
+2026-04-08 00:17:04,288 [BenchmarkLogger     ] INFO    BenchmarkLogger started
+2026-04-08 00:17:05,464 [MainThread          ] INFO    Camera found at index 0
+2026-04-08 00:17:06,536 [MainThread          ] INFO    Camera found at index 2
+2026-04-08 00:17:07,742 [MainThread          ] INFO    Camera found at index 4
+2026-04-08 00:17:07,748 [MainThread          ] INFO    Detected camera indices: [0, 2, 4]
+2026-04-08 00:17:07,749 [MainThread          ] INFO    CameraReader 'vehicle' started on index 0
+2026-04-08 00:17:07,750 [MainThread          ] INFO    CameraReader 'driver_cargo' started on index 2
+2026-04-08 00:17:07,751 [DrowsinessDetector  ] INFO    DrowsinessDetector starting …
+2026-04-08 00:17:07,752 [CargoDetector       ] INFO    CargoDetector starting …
+2026-04-08 00:17:07,770 [VehicleDetector     ] INFO    VehicleDetector starting …
+2026-04-08 00:17:07,774 [GPSManager          ] INFO    GPSManager: probing for SIM7600G-H …
+2026-04-08 00:17:07,776 [SensorManager       ] INFO    SensorManager starting …
+2026-04-08 00:17:07,778 [MainThread          ] INFO    Dashboard → http://localhost:5000
+2026-04-08 00:17:07,779 [MainThread          ] INFO    Dashboard → http://0.0.0.0:5000
+2026-04-08 00:17:07,798 [MainThread          ] INFO    [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.41.190.52:5000
+2026-04-08 00:17:07,799 [MainThread          ] INFO    [33mPress CTRL+C to quit[0m
+2026-04-08 00:17:07,885 [SensorManager       ] INFO    Ultrasonic GPIO ready
+2026-04-08 00:17:07,901 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 51.3°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:17:08,500 [Cam-driver_cargo    ] INFO    [Cam-driver_cargo] Camera 2 streaming
+2026-04-08 00:17:08,846 [CargoDetector       ] INFO    CargoDetector ready — waiting for cargo mode
+2026-04-08 00:17:08,864 [VehicleDetector     ] INFO    VehicleDetector ready
+2026-04-08 00:17:08,867 [DrowsinessDetector  ] INFO    DrowsinessDetector ready
+2026-04-08 00:17:08,900 [Cam-vehicle         ] INFO    [Cam-vehicle] Camera 0 streaming
+2026-04-08 00:17:09,558 [AlertLogger         ] WARNING [ALERT] HEAD_DISTRACTION | driver_camera | Yaw=-7688.0° | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:17:09,827 [GPSManager          ] INFO    SIM7600G-H detected on /dev/ttyUSB2
+2026-04-08 00:17:10,146 [Thread-6 (process_request_thread)] INFO    10.41.190.52 - - [08/Apr/2026 00:17:10] "GET /socket.io/?EIO=4&transport=polling&t=PrfHHmy HTTP/1.1" 200 -
+2026-04-08 00:17:10,164 [Thread-9 (process_request_thread)] INFO    10.41.190.52 - - [08/Apr/2026 00:17:10] "POST /socket.io/?EIO=4&transport=polling&t=PrfHHn8&sid=SKqxp15B9LiUJ8UWAAAA HTTP/1.1" 200 -
+2026-04-08 00:17:10,168 [Thread-11 (process_request_thread)] INFO    10.41.190.52 - - [08/Apr/2026 00:17:10] "GET /socket.io/?EIO=4&transport=polling&t=PrfHHnA&sid=SKqxp15B9LiUJ8UWAAAA HTTP/1.1" 200 -
+2026-04-08 00:17:14,114 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 52.3°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:17:14,730 [AlertLogger         ] WARNING [ALERT] HEAD_DISTRACTION | driver_camera | Yaw=-248.2° | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:17:14,833 [GPSManager          ] INFO    GPSManager ready — reading NMEA stream
+2026-04-08 00:17:14,864 [Thread-25 (process_request_thread)] INFO    10.41.190.52 - - [08/Apr/2026 00:17:14] "GET / HTTP/1.1" 200 -
+2026-04-08 00:17:14,884 [Thread-10 (process_request_thread)] INFO    10.41.190.52 - - [08/Apr/2026 00:17:14] "GET /socket.io/?EIO=4&transport=websocket&sid=SKqxp15B9LiUJ8UWAAAA HTTP/1.1" 200 -
+2026-04-08 00:17:14,950 [Thread-26 (process_request_thread)] INFO    10.41.190.52 - - [08/Apr/2026 00:17:14] "GET /socket.io/?EIO=4&transport=polling&t=PrfHIxn HTTP/1.1" 200 -
+2026-04-08 00:17:14,955 [Thread-28 (process_request_thread)] INFO    10.41.190.52 - - [08/Apr/2026 00:17:14] "GET /video/vehicle HTTP/1.1" 200 -
+2026-04-08 00:17:14,962 [Thread-29 (process_request_thread)] INFO    10.41.190.52 - - [08/Apr/2026 00:17:14] "GET /video/driver_cargo HTTP/1.1" 200 -
+2026-04-08 00:17:14,997 [Thread-32 (process_request_thread)] INFO    10.41.190.52 - - [08/Apr/2026 00:17:14] "POST /socket.io/?EIO=4&transport=polling&t=PrfHIyL&sid=fhAelEk42Yk9tGz9AAAC HTTP/1.1" 200 -
+2026-04-08 00:17:15,003 [Thread-33 (process_request_thread)] INFO    10.41.190.52 - - [08/Apr/2026 00:17:15] "GET /socket.io/?EIO=4&transport=polling&t=PrfHIyN&sid=fhAelEk42Yk9tGz9AAAC HTTP/1.1" 200 -
+2026-04-08 00:17:19,903 [AlertLogger         ] WARNING [ALERT] HEAD_DISTRACTION | driver_camera | Yaw=1952.5° | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:17:20,377 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 52.6°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:17:25,062 [AlertLogger         ] WARNING [ALERT] HEAD_DISTRACTION | driver_camera | Yaw=-3743.9° | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:17:26,638 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 52.8°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:17:30,193 [AlertLogger         ] WARNING [ALERT] HEAD_DISTRACTION | driver_camera | Yaw=-3785.1° | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:17:32,894 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 52.6°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:17:35,378 [AlertLogger         ] WARNING [ALERT] HEAD_DISTRACTION | driver_camera | Yaw=-3879.9° | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:17:39,149 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 53.0°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:17:40,514 [AlertLogger         ] WARNING [ALERT] HEAD_DISTRACTION | driver_camera | Yaw=-1358.5° | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:17:45,404 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 53.0°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:17:45,643 [AlertLogger         ] WARNING [ALERT] HEAD_DISTRACTION | driver_camera | Yaw=-497.2° | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:17:50,714 [AlertLogger         ] WARNING [ALERT] HEAD_DISTRACTION | driver_camera | Yaw=8979.6° | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:17:51,658 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 53.3°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:17:58,482 [AlertLogger         ] WARNING [ALERT] HEAD_DISTRACTION | driver_camera | Yaw=14357.3° | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:17:58,483 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 53.4°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:18:01,606 [AlertLogger         ] WARNING [ALERT] HEAD_DISTRACTION | driver_camera | Yaw=19328.1° | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:18:04,176 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 53.5°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:18:06,763 [AlertLogger         ] WARNING [ALERT] HEAD_DISTRACTION | driver_camera | Yaw=9923.3° | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:18:10,439 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 53.8°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:18:11,947 [AlertLogger         ] WARNING [ALERT] HEAD_DISTRACTION | driver_camera | Yaw=5528.9° | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:18:16,697 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 53.9°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:18:17,213 [AlertLogger         ] WARNING [ALERT] HEAD_DISTRACTION | driver_camera | Yaw=8224.2° | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:18:22,464 [AlertLogger         ] WARNING [ALERT] HEAD_DISTRACTION | driver_camera | Yaw=-4852.7° | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:18:22,968 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 54.4°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:18:27,738 [AlertLogger         ] WARNING [ALERT] HEAD_DISTRACTION | driver_camera | Yaw=5239.1° | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:18:29,222 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 54.2°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:18:31,569 [AlertLogger         ] WARNING [ALERT] PERSON_IN_CARGO | cargo_camera | conf=0.90 | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:18:35,480 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 54.1°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:18:36,626 [AlertLogger         ] WARNING [ALERT] PERSON_IN_CARGO | cargo_camera | conf=0.90 | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:18:42,999 [AlertLogger         ] WARNING [ALERT] PERSON_IN_CARGO | cargo_camera | conf=0.87 | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:18:43,000 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 54.5°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:18:46,648 [CargoDetector       ] INFO    Cargo baseline: {}
+2026-04-08 00:18:47,146 [AlertLogger         ] WARNING [ALERT] PERSON_IN_CARGO | cargo_camera | conf=0.86 | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:18:48,001 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 54.4°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:18:52,197 [AlertLogger         ] WARNING [ALERT] PERSON_IN_CARGO | cargo_camera | conf=0.89 | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:18:54,258 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 54.6°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:18:57,671 [AlertLogger         ] WARNING [ALERT] PERSON_IN_CARGO | cargo_camera | conf=0.92 | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:19:00,514 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 54.4°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:19:03,046 [AlertLogger         ] WARNING [ALERT] PERSON_IN_CARGO | cargo_camera | conf=0.93 | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:19:06,770 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 54.8°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:19:08,450 [AlertLogger         ] WARNING [ALERT] PERSON_IN_CARGO | cargo_camera | conf=0.92 | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:19:13,027 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 54.9°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:19:13,942 [AlertLogger         ] WARNING [ALERT] PERSON_IN_CARGO | cargo_camera | conf=0.94 | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:19:19,889 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 54.7°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:19:19,890 [AlertLogger         ] WARNING [ALERT] PERSON_IN_CARGO | cargo_camera | conf=0.92 | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:19:25,145 [AlertLogger         ] WARNING [ALERT] PERSON_IN_CARGO | cargo_camera | conf=0.93 | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:19:25,542 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 54.8°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:19:30,539 [AlertLogger         ] WARNING [ALERT] PERSON_IN_CARGO | cargo_camera | conf=0.93 | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:19:31,798 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 55.0°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:19:35,941 [AlertLogger         ] WARNING [ALERT] PERSON_IN_CARGO | cargo_camera | conf=0.87 | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:19:38,052 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 55.5°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:19:41,363 [AlertLogger         ] WARNING [ALERT] PERSON_IN_CARGO | cargo_camera | conf=0.94 | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:19:44,312 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 55.3°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:19:45,384 [AlertLogger         ] WARNING [ALERT] HEAD_DISTRACTION | driver_camera | Yaw=4448.3° | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:19:50,570 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 54.9°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:19:56,195 [MainThread          ] INFO    Shutdown signal received …
+2026-04-08 00:19:56,196 [MainThread          ] INFO    Fleet Monitor stopped cleanly.
+2026-04-08 00:20:15,050 [MainThread          ] INFO    ============================================================
+2026-04-08 00:20:15,050 [MainThread          ] INFO      FLEET MONITOR — Jetson Orin Nano
+2026-04-08 00:20:15,050 [MainThread          ] INFO    ============================================================
+2026-04-08 00:20:15,053 [MainThread          ] INFO    Buzzer initialised on GPIO pin 15
+2026-04-08 00:20:15,053 [AlertLogger         ] INFO    AlertLogger started
+2026-04-08 00:20:15,055 [BenchmarkLogger     ] INFO    BenchmarkLogger started
+2026-04-08 00:20:16,187 [MainThread          ] INFO    Camera found at index 0
+2026-04-08 00:20:17,280 [MainThread          ] INFO    Camera found at index 2
+2026-04-08 00:20:18,485 [MainThread          ] INFO    Camera found at index 4
+2026-04-08 00:20:18,489 [MainThread          ] INFO    Detected camera indices: [0, 2, 4]
+2026-04-08 00:20:18,491 [MainThread          ] INFO    CameraReader 'vehicle' started on index 0
+2026-04-08 00:20:18,491 [MainThread          ] INFO    CameraReader 'driver_cargo' started on index 2
+2026-04-08 00:20:18,492 [DrowsinessDetector  ] INFO    DrowsinessDetector starting …
+2026-04-08 00:20:18,493 [CargoDetector       ] INFO    CargoDetector starting …
+2026-04-08 00:20:18,501 [VehicleDetector     ] INFO    VehicleDetector starting …
+2026-04-08 00:20:18,511 [GPSManager          ] INFO    GPSManager: probing for SIM7600G-H …
+2026-04-08 00:20:18,516 [SensorManager       ] INFO    SensorManager starting …
+2026-04-08 00:20:18,518 [MainThread          ] INFO    Dashboard → http://localhost:5000
+2026-04-08 00:20:18,526 [MainThread          ] INFO    Dashboard → http://0.0.0.0:5000
+2026-04-08 00:20:18,536 [MainThread          ] INFO    [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.41.190.52:5000
+2026-04-08 00:20:18,538 [MainThread          ] INFO    [33mPress CTRL+C to quit[0m
+2026-04-08 00:20:18,627 [SensorManager       ] INFO    Ultrasonic GPIO ready
+2026-04-08 00:20:18,644 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 53.4°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:20:19,222 [Cam-vehicle         ] INFO    [Cam-vehicle] Camera 0 streaming
+2026-04-08 00:20:19,223 [Cam-driver_cargo    ] INFO    [Cam-driver_cargo] Camera 2 streaming
+2026-04-08 00:20:19,229 [Thread-2 (process_request_thread)] INFO    10.41.190.52 - - [08/Apr/2026 00:20:19] "GET /socket.io/?EIO=4&transport=polling&t=PrfH_ti HTTP/1.1" 200 -
+2026-04-08 00:20:19,248 [Thread-5 (process_request_thread)] INFO    10.41.190.52 - - [08/Apr/2026 00:20:19] "POST /socket.io/?EIO=4&transport=polling&t=PrfH_xd&sid=V64wAA4dCVMe94w0AAAA HTTP/1.1" 200 -
+2026-04-08 00:20:19,257 [Thread-8 (process_request_thread)] INFO    10.41.190.52 - - [08/Apr/2026 00:20:19] "GET /socket.io/?EIO=4&transport=polling&t=PrfH_xg&sid=V64wAA4dCVMe94w0AAAA HTTP/1.1" 200 -
+2026-04-08 00:20:19,547 [VehicleDetector     ] INFO    VehicleDetector ready
+2026-04-08 00:20:19,566 [CargoDetector       ] INFO    CargoDetector ready — waiting for cargo mode
+2026-04-08 00:20:19,589 [DrowsinessDetector  ] INFO    DrowsinessDetector ready
+2026-04-08 00:20:20,857 [GPSManager          ] INFO    SIM7600G-H detected on /dev/ttyUSB2
+2026-04-08 00:20:22,166 [AlertLogger         ] WARNING [ALERT] PHONE_DETECTED | driver_camera | conf=0.63 | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:20:24,619 [Thread-15 (process_request_thread)] INFO    10.41.190.52 - - [08/Apr/2026 00:20:24] "GET / HTTP/1.1" 200 -
+2026-04-08 00:20:24,642 [Thread-6 (process_request_thread)] INFO    10.41.190.52 - - [08/Apr/2026 00:20:24] "GET /socket.io/?EIO=4&transport=websocket&sid=V64wAA4dCVMe94w0AAAA HTTP/1.1" 200 -
+2026-04-08 00:20:24,696 [Thread-18 (process_request_thread)] INFO    10.41.190.52 - - [08/Apr/2026 00:20:24] "GET /socket.io/?EIO=4&transport=polling&t=PrfI1Gl HTTP/1.1" 200 -
+2026-04-08 00:20:24,697 [Thread-17 (process_request_thread)] INFO    10.41.190.52 - - [08/Apr/2026 00:20:24] "GET /video/driver_cargo HTTP/1.1" 200 -
+2026-04-08 00:20:24,698 [Thread-16 (process_request_thread)] INFO    10.41.190.52 - - [08/Apr/2026 00:20:24] "GET /video/vehicle HTTP/1.1" 200 -
+2026-04-08 00:20:24,739 [Thread-20 (process_request_thread)] INFO    10.41.190.52 - - [08/Apr/2026 00:20:24] "POST /socket.io/?EIO=4&transport=polling&t=PrfI1HJ&sid=OkHrJ6ZHxGbcKC5dAAAC HTTP/1.1" 200 -
+2026-04-08 00:20:24,760 [Thread-22 (process_request_thread)] INFO    10.41.190.52 - - [08/Apr/2026 00:20:24] "GET /socket.io/?EIO=4&transport=polling&t=PrfI1HS&sid=OkHrJ6ZHxGbcKC5dAAAC HTTP/1.1" 200 -
+2026-04-08 00:20:24,834 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 54.3°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:20:25,863 [GPSManager          ] INFO    GPSManager ready — reading NMEA stream
+2026-04-08 00:20:31,088 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 54.1°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:20:37,344 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 54.5°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:20:39,409 [AlertLogger         ] WARNING [ALERT] PERSON_IN_CARGO | cargo_camera | conf=0.74 | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:20:43,600 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 54.7°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:20:44,855 [AlertLogger         ] WARNING [ALERT] PERSON_IN_CARGO | cargo_camera | conf=0.55 | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:20:49,861 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 54.9°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:20:54,829 [CargoDetector       ] INFO    Cargo baseline: {63: 1, 62: 3, 66: 1, 64: 1}
+2026-04-08 00:20:56,117 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 54.8°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:21:01,745 [AlertLogger         ] WARNING [ALERT] PERSON_IN_CARGO | cargo_camera | conf=0.63 | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:21:02,371 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 54.9°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:21:05,292 [AlertLogger         ] WARNING [ALERT] CARGO_OBJECT_MISSING | cargo_camera | laptop expected:1 seen:0 | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:21:08,628 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 55.3°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:21:10,790 [AlertLogger         ] WARNING [ALERT] CARGO_OBJECT_MISSING | cargo_camera | laptop expected:1 seen:0 | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:21:14,881 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 54.9°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:21:15,790 [AlertLogger         ] WARNING [ALERT] CARGO_OBJECT_MISSING | cargo_camera | laptop expected:1 seen:0 | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:21:19,286 [AlertLogger         ] WARNING [ALERT] PERSON_IN_CARGO | cargo_camera | conf=0.64 | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:21:21,137 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 54.8°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:21:21,276 [AlertLogger         ] WARNING [ALERT] CARGO_OBJECT_MISSING | cargo_camera | laptop expected:1 seen:0 | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:21:26,408 [AlertLogger         ] WARNING [ALERT] CARGO_OBJECT_MISSING | cargo_camera | laptop expected:1 seen:0 | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:21:27,392 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 55.1°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:21:27,934 [AlertLogger         ] WARNING [ALERT] PERSON_IN_CARGO | cargo_camera | conf=0.52 | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:21:31,459 [AlertLogger         ] WARNING [ALERT] CARGO_OBJECT_MISSING | cargo_camera | laptop expected:1 seen:0 | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:21:33,647 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 54.7°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:21:36,547 [AlertLogger         ] WARNING [ALERT] CARGO_OBJECT_MISSING | cargo_camera | laptop expected:1 seen:0 | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:21:39,069 [AlertLogger         ] WARNING [ALERT] PERSON_IN_CARGO | cargo_camera | conf=0.69 | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:21:39,902 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 54.9°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:21:43,087 [AlertLogger         ] WARNING [ALERT] CARGO_OBJECT_MISSING | cargo_camera | laptop expected:1 seen:0 | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:21:45,754 [AlertLogger         ] WARNING [ALERT] PERSON_IN_CARGO | cargo_camera | conf=0.52 | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:21:46,157 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 54.9°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:21:46,789 [AlertLogger         ] WARNING [ALERT] CARGO_OBJECT_MISSING | cargo_camera | laptop expected:1 seen:0 | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:21:50,931 [AlertLogger         ] WARNING [ALERT] PERSON_IN_CARGO | cargo_camera | conf=0.66 | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:21:52,008 [AlertLogger         ] WARNING [ALERT] CARGO_OBJECT_MISSING | cargo_camera | laptop expected:1 seen:0 | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:21:52,412 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 55.0°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:21:57,477 [AlertLogger         ] WARNING [ALERT] CARGO_OBJECT_MISSING | cargo_camera | laptop expected:1 seen:0 | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:21:58,673 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 55.0°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:22:02,537 [AlertLogger         ] WARNING [ALERT] CARGO_OBJECT_MISSING | cargo_camera | laptop expected:1 seen:0 | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:22:04,934 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 55.2°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:22:07,541 [AlertLogger         ] WARNING [ALERT] PERSON_IN_CARGO | cargo_camera | conf=0.62 | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:22:07,542 [AlertLogger         ] WARNING [ALERT] CARGO_OBJECT_MISSING | cargo_camera | laptop expected:1 seen:0 | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:22:11,194 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 55.1°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:22:13,006 [AlertLogger         ] WARNING [ALERT] CARGO_OBJECT_MISSING | cargo_camera | laptop expected:1 seen:0 | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:22:17,450 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 54.9°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:22:18,484 [AlertLogger         ] WARNING [ALERT] CARGO_OBJECT_MISSING | cargo_camera | laptop expected:1 seen:0 | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:22:20,974 [AlertLogger         ] WARNING [ALERT] PERSON_IN_CARGO | cargo_camera | conf=0.68 | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:22:23,706 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 55.2°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:22:23,952 [AlertLogger         ] WARNING [ALERT] CARGO_OBJECT_MISSING | cargo_camera | laptop expected:1 seen:0 | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:22:27,923 [AlertLogger         ] WARNING [ALERT] PERSON_IN_CARGO | cargo_camera | conf=0.56 | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:22:29,477 [AlertLogger         ] WARNING [ALERT] CARGO_OBJECT_MISSING | cargo_camera | laptop expected:1 seen:0 | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:22:29,963 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 54.9°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:22:34,892 [AlertLogger         ] WARNING [ALERT] CARGO_OBJECT_MISSING | cargo_camera | laptop expected:1 seen:0 | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:22:36,217 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 55.4°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:22:40,311 [AlertLogger         ] WARNING [ALERT] CARGO_OBJECT_MISSING | cargo_camera | laptop expected:1 seen:0 | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:22:42,472 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 55.0°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:22:48,729 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 55.4°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:22:54,986 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 55.3°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:22:55,643 [AlertLogger         ] WARNING [ALERT] HEAD_DISTRACTION | driver_camera | Yaw=12306.0° | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:23:01,240 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 54.9°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:23:07,493 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 55.3°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:23:13,750 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 55.1°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:23:20,011 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 54.9°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:23:26,270 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 55.0°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:23:32,533 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 54.9°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:23:38,789 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 55.0°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:23:45,049 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 55.0°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:23:51,303 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 55.4°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:23:57,556 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 55.2°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:24:03,815 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 55.3°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:24:10,070 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 55.3°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:24:12,772 [AlertLogger         ] WARNING [ALERT] HEAD_DISTRACTION | driver_camera | Yaw=26055.5° | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:24:16,326 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 54.9°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:24:22,581 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 55.2°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:24:28,839 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 55.0°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:24:35,093 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 55.1°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:24:41,348 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 55.1°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:24:47,603 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 55.2°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:24:53,865 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 54.9°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:25:00,120 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 55.2°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:25:06,382 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 55.2°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:25:12,636 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 55.6°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:25:18,898 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 55.4°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:25:25,155 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 55.4°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:25:31,412 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 55.0°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:25:37,670 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 55.3°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:25:43,928 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 55.2°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:25:50,183 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 55.0°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:25:56,439 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 55.2°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:26:03,006 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 55.1°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:26:09,261 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 55.1°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:26:15,515 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 55.0°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:26:21,775 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 55.1°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:26:28,032 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 54.9°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:26:34,291 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 55.0°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:26:40,545 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 55.1°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:26:46,805 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 55.4°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:26:53,067 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 55.3°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:26:59,330 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 55.3°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:27:05,592 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 55.2°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:27:11,848 [AlertLogger         ] WARNING [ALERT] HIGH_TEMPERATURE | temperature_sensor | 55.3°C > threshold 18.0°C | GPS(NO_FIX,NO_FIX)
+2026-04-08 00:27:12,265 [MainThread          ] INFO    Shutdown signal received …
+2026-04-08 00:27:12,265 [MainThread          ] INFO    Fleet Monitor stopped cleanly.
+2026-04-08 13:27:36,477 [MainThread            ] INFO    ==============================================================
+2026-04-08 13:27:36,479 [MainThread            ] INFO       FLEET MONITOR  —  Jetson Orin Nano  (ALL-IN-ONE)
+2026-04-08 13:27:36,479 [MainThread            ] INFO    ==============================================================
+2026-04-08 13:27:37,579 [MainThread            ] INFO    Camera found at index 0
+2026-04-08 13:27:38,676 [MainThread            ] INFO    Camera found at index 2
+2026-04-08 13:27:39,769 [MainThread            ] INFO    Camera found at index 4
+2026-04-08 13:27:39,772 [MainThread            ] INFO    Detected cameras: [0, 2, 4]
+2026-04-08 13:27:39,773 [MainThread            ] INFO    Camera map → vehicle:0  cargo:2  driver:2
+2026-04-08 13:27:39,774 [Cam-vehicle           ] INFO    [Cam-vehicle] starting on index 0
+2026-04-08 13:27:39,774 [Cam-cargo             ] INFO    [Cam-cargo] starting on index 2
+2026-04-08 13:27:39,774 [Cam-driver            ] INFO    [Cam-driver] starting on index 2
+2026-04-08 13:27:39,775 [XLSXLogger            ] INFO    XLSXLogger started
+2026-04-08 13:27:39,775 [VehicleDet            ] INFO    VehicleDetector starting …
+2026-04-08 13:27:39,776 [CargoDet              ] INFO    CargoDetector starting …
+2026-04-08 13:27:39,777 [DrowsinessDet         ] INFO    DrowsinessDetector starting …
+2026-04-08 13:27:39,778 [GPSManager            ] INFO    GPSManager: searching for SIM7600G-H …
+2026-04-08 13:27:39,888 [SensorMgr             ] INFO    SensorManager starting …
+2026-04-08 13:27:39,890 [BenchLogger           ] INFO    BenchmarkLogger started
+2026-04-08 13:27:39,891 [MainThread            ] INFO    All threads started. Dashboard → http://localhost:5000
+2026-04-08 13:27:39,892 [MainThread            ] INFO    Dashboard → http://0.0.0.0:5000
+2026-04-08 13:27:39,924 [MainThread            ] INFO    [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://172.24.0.29:5000
+2026-04-08 13:27:39,925 [MainThread            ] INFO    [33mPress CTRL+C to quit[0m
+2026-04-08 13:27:40,615 [Cam-cargo             ] INFO    [Cam-cargo] Camera 2 opened
+2026-04-08 13:27:40,615 [Cam-vehicle           ] INFO    [Cam-vehicle] Camera 0 opened
+2026-04-08 13:27:47,622 [Cam-driver            ] ERROR   [Cam-driver] Cannot open camera 2
+2026-04-08 13:27:55,587 [Thread-1 (process_request_thread)] INFO    127.0.0.1 - - [08/Apr/2026 13:27:55] "GET / HTTP/1.1" 200 -
+2026-04-08 13:27:55,654 [Thread-2 (process_request_thread)] INFO    127.0.0.1 - - [08/Apr/2026 13:27:55] "GET /video/vehicle HTTP/1.1" 200 -
+2026-04-08 13:27:55,659 [Thread-3 (process_request_thread)] INFO    127.0.0.1 - - [08/Apr/2026 13:27:55] "GET /video/cargo HTTP/1.1" 200 -
+2026-04-08 13:27:55,847 [Thread-4 (process_request_thread)] INFO    127.0.0.1 - - [08/Apr/2026 13:27:55] "GET /video/driver HTTP/1.1" 200 -
+2026-04-08 13:27:55,852 [Thread-5 (process_request_thread)] INFO    127.0.0.1 - - [08/Apr/2026 13:27:55] "GET /socket.io/?EIO=4&transport=polling&t=Pri6HBz HTTP/1.1" 200 -
+2026-04-08 13:27:55,883 [Thread-8 (process_request_thread)] INFO    127.0.0.1 - - [08/Apr/2026 13:27:55] "POST /socket.io/?EIO=4&transport=polling&t=Pri6HCX&sid=JHm5nW5zniXdZ_cMAAAA HTTP/1.1" 200 -
+2026-04-08 13:27:55,885 [Thread-9 (process_request_thread)] INFO    127.0.0.1 - - [08/Apr/2026 13:27:55] "GET /socket.io/?EIO=4&transport=polling&t=Pri6HCa&sid=JHm5nW5zniXdZ_cMAAAA HTTP/1.1" 200 -
+2026-04-08 13:27:55,928 [Thread-12 (process_request_thread)] INFO    127.0.0.1 - - [08/Apr/2026 13:27:55] "GET /socket.io/?EIO=4&transport=polling&t=Pri6HD9&sid=JHm5nW5zniXdZ_cMAAAA HTTP/1.1" 200 -
+2026-04-08 13:27:55,944 [Thread-14 (process_request_thread)] INFO    127.0.0.1 - - [08/Apr/2026 13:27:55] "GET /video/driver?1775635075915 HTTP/1.1" 200 -
+2026-04-08 13:27:55,953 [Thread-13 (process_request_thread)] INFO    127.0.0.1 - - [08/Apr/2026 13:27:55] "GET /video/cargo?1775635075915 HTTP/1.1" 200 -
+2026-04-08 13:27:56,065 [Thread-16 (process_request_thread)] INFO    127.0.0.1 - - [08/Apr/2026 13:27:56] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2026-04-08 13:27:56,133 [Cam-driver            ] ERROR   [Cam-driver] Cannot open camera 2
+2026-04-08 13:28:04,645 [Cam-driver            ] ERROR   [Cam-driver] Cannot open camera 2
+2026-04-08 13:28:13,157 [Cam-driver            ] ERROR   [Cam-driver] Cannot open camera 2
+2026-04-08 13:28:14,175 [GPSManager            ] WARNING GPS module not found. Retrying in 10s …
+2026-04-08 13:28:14,752 [Thread-17 (process_request_thread)] INFO    127.0.0.1 - - [08/Apr/2026 13:28:14] "GET / HTTP/1.1" 200 -
+2026-04-08 13:28:14,777 [Thread-10 (process_request_thread)] INFO    127.0.0.1 - - [08/Apr/2026 13:28:14] "GET /socket.io/?EIO=4&transport=websocket&sid=JHm5nW5zniXdZ_cMAAAA HTTP/1.1" 200 -
+2026-04-08 13:28:14,828 [Thread-19 (process_request_thread)] INFO    127.0.0.1 - - [08/Apr/2026 13:28:14] "GET /video/cargo HTTP/1.1" 200 -
+2026-04-08 13:28:14,829 [Thread-18 (process_request_thread)] INFO    127.0.0.1 - - [08/Apr/2026 13:28:14] "GET /video/vehicle HTTP/1.1" 200 -
+2026-04-08 13:28:14,838 [Thread-20 (process_request_thread)] INFO    127.0.0.1 - - [08/Apr/2026 13:28:14] "GET /video/driver HTTP/1.1" 200 -
+2026-04-08 13:28:14,843 [Thread-21 (process_request_thread)] INFO    127.0.0.1 - - [08/Apr/2026 13:28:14] "GET /socket.io/?EIO=4&transport=polling&t=Pri6Lqr HTTP/1.1" 200 -
+2026-04-08 13:28:14,863 [Thread-23 (process_request_thread)] INFO    127.0.0.1 - - [08/Apr/2026 13:28:14] "POST /socket.io/?EIO=4&transport=polling&t=Pri6Lr6&sid=IUArP5FcYbanBRt-AAAC HTTP/1.1" 200 -
+2026-04-08 13:28:14,871 [Thread-25 (process_request_thread)] INFO    127.0.0.1 - - [08/Apr/2026 13:28:14] "GET /socket.io/?EIO=4&transport=polling&t=Pri6Lr8&sid=IUArP5FcYbanBRt-AAAC HTTP/1.1" 200 -
+2026-04-08 13:28:15,132 [Thread-28 (process_request_thread)] INFO    127.0.0.1 - - [08/Apr/2026 13:28:15] "GET / HTTP/1.1" 200 -
+2026-04-08 13:28:15,155 [Thread-24 (process_request_thread)] INFO    127.0.0.1 - - [08/Apr/2026 13:28:15] "GET /socket.io/?EIO=4&transport=websocket&sid=IUArP5FcYbanBRt-AAAC HTTP/1.1" 200 -
+2026-04-08 13:28:15,196 [Thread-30 (process_request_thread)] INFO    127.0.0.1 - - [08/Apr/2026 13:28:15] "GET /video/vehicle HTTP/1.1" 200 -
+2026-04-08 13:28:15,207 [Thread-29 (process_request_thread)] INFO    127.0.0.1 - - [08/Apr/2026 13:28:15] "GET /video/cargo HTTP/1.1" 200 -
+2026-04-08 13:28:15,210 [Thread-31 (process_request_thread)] INFO    127.0.0.1 - - [08/Apr/2026 13:28:15] "GET /socket.io/?EIO=4&transport=polling&t=Pri6LwQ HTTP/1.1" 200 -
+2026-04-08 13:28:15,215 [Thread-32 (process_request_thread)] INFO    127.0.0.1 - - [08/Apr/2026 13:28:15] "GET /video/driver HTTP/1.1" 200 -
+2026-04-08 13:28:15,228 [Thread-34 (process_request_thread)] INFO    127.0.0.1 - - [08/Apr/2026 13:28:15] "POST /socket.io/?EIO=4&transport=polling&t=Pri6Lwr&sid=U4LWS2WlMQ4gSiXbAAAE HTTP/1.1" 200 -
+2026-04-08 13:28:15,239 [Thread-36 (process_request_thread)] INFO    127.0.0.1 - - [08/Apr/2026 13:28:15] "GET /socket.io/?EIO=4&transport=polling&t=Pri6Lwt&sid=U4LWS2WlMQ4gSiXbAAAE HTTP/1.1" 200 -
+2026-04-08 13:28:15,516 [Thread-39 (process_request_thread)] INFO    127.0.0.1 - - [08/Apr/2026 13:28:15] "GET / HTTP/1.1" 200 -
+2026-04-08 13:28:15,552 [Thread-35 (process_request_thread)] INFO    127.0.0.1 - - [08/Apr/2026 13:28:15] "GET /socket.io/?EIO=4&transport=websocket&sid=U4LWS2WlMQ4gSiXbAAAE HTTP/1.1" 200 -
+2026-04-08 13:28:15,587 [Thread-40 (process_request_thread)] INFO    127.0.0.1 - - [08/Apr/2026 13:28:15] "GET /video/vehicle HTTP/1.1" 200 -
+2026-04-08 13:28:15,588 [Thread-41 (process_request_thread)] INFO    127.0.0.1 - - [08/Apr/2026 13:28:15] "GET /video/cargo HTTP/1.1" 200 -
+2026-04-08 13:28:15,591 [Thread-42 (process_request_thread)] INFO    127.0.0.1 - - [08/Apr/2026 13:28:15] "GET /socket.io/?EIO=4&transport=polling&t=Pri6M0Q HTTP/1.1" 200 -
+2026-04-08 13:28:15,597 [Thread-43 (process_request_thread)] INFO    127.0.0.1 - - [08/Apr/2026 13:28:15] "GET /video/driver HTTP/1.1" 200 -
+2026-04-08 13:28:15,618 [Thread-45 (process_request_thread)] INFO    127.0.0.1 - - [08/Apr/2026 13:28:15] "POST /socket.io/?EIO=4&transport=polling&t=Pri6M0o&sid=PlMzrbBdR7KkamclAAAG HTTP/1.1" 200 -
+2026-04-08 13:28:15,622 [Thread-47 (process_request_thread)] INFO    127.0.0.1 - - [08/Apr/2026 13:28:15] "GET /socket.io/?EIO=4&transport=polling&t=Pri6M0t&sid=PlMzrbBdR7KkamclAAAG HTTP/1.1" 200 -
+2026-04-08 13:28:15,639 [Thread-49 (process_request_thread)] INFO    127.0.0.1 - - [08/Apr/2026 13:28:15] "GET /socket.io/?EIO=4&transport=polling&t=Pri6M1G&sid=PlMzrbBdR7KkamclAAAG HTTP/1.1" 200 -
+2026-04-08 13:28:21,669 [Cam-driver            ] ERROR   [Cam-driver] Cannot open camera 2
+2026-04-08 13:28:25,731 [Thread-51 (process_request_thread)] INFO    127.0.0.1 - - [08/Apr/2026 13:28:25] "GET /video/cargo?1775635095633 HTTP/1.1" 200 -
+2026-04-08 13:28:25,734 [Thread-52 (process_request_thread)] INFO    127.0.0.1 - - [08/Apr/2026 13:28:25] "GET /video/driver?1775635095633 HTTP/1.1" 200 -
+2026-04-08 13:28:30,181 [Cam-driver            ] ERROR   [Cam-driver] Cannot open camera 2
+2026-04-08 13:28:38,697 [Cam-driver            ] ERROR   [Cam-driver] Cannot open camera 2
+2026-04-08 13:28:44,094 [MainThread            ] INFO    Shutdown signal …
+2026-04-08 13:30:36,616 [MainThread            ] INFO    ==============================================================
+2026-04-08 13:30:36,617 [MainThread            ] INFO       FLEET MONITOR  —  Jetson Orin Nano  (ALL-IN-ONE)
+2026-04-08 13:30:36,617 [MainThread            ] INFO    ==============================================================
+2026-04-08 13:30:37,678 [MainThread            ] INFO    Camera found at index 0
+2026-04-08 13:30:38,745 [MainThread            ] INFO    Camera found at index 2
+2026-04-08 13:30:39,806 [MainThread            ] INFO    Camera found at index 4
+2026-04-08 13:30:39,810 [MainThread            ] INFO    Detected cameras: [0, 2, 4]
+2026-04-08 13:30:39,810 [MainThread            ] INFO    Camera map → vehicle:0  cargo:2  driver:4
+2026-04-08 13:30:39,812 [Cam-vehicle           ] INFO    [Cam-vehicle] starting on index 0
+2026-04-08 13:30:39,812 [Cam-cargo             ] INFO    [Cam-cargo] starting on index 2
+2026-04-08 13:30:39,812 [Cam-driver            ] INFO    [Cam-driver] starting on index 4
+2026-04-08 13:30:39,813 [XLSXLogger            ] INFO    XLSXLogger started
+2026-04-08 13:30:39,814 [VehicleDet            ] INFO    VehicleDetector starting …
+2026-04-08 13:30:39,814 [CargoDet              ] INFO    CargoDetector starting …
+2026-04-08 13:30:39,815 [DrowsinessDet         ] INFO    DrowsinessDetector starting …
+2026-04-08 13:30:39,817 [GPSManager            ] INFO    GPSManager: searching for SIM7600G-H …
+2026-04-08 13:30:39,841 [SensorMgr             ] INFO    SensorManager starting …
+2026-04-08 13:30:39,848 [BenchLogger           ] INFO    BenchmarkLogger started
+2026-04-08 13:30:39,849 [MainThread            ] INFO    All threads started. Dashboard → http://localhost:5000
+2026-04-08 13:30:39,851 [MainThread            ] INFO    Dashboard → http://0.0.0.0:5000
+2026-04-08 13:30:39,864 [MainThread            ] INFO    [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://172.24.0.29:5000
+2026-04-08 13:30:39,867 [MainThread            ] INFO    [33mPress CTRL+C to quit[0m
+2026-04-08 13:30:40,507 [Cam-vehicle           ] INFO    [Cam-vehicle] Camera 0 opened
+2026-04-08 13:30:40,507 [Cam-cargo             ] INFO    [Cam-cargo] Camera 2 opened
+2026-04-08 13:30:41,100 [Thread-1 (process_request_thread)] INFO    127.0.0.1 - - [08/Apr/2026 13:30:41] "GET /socket.io/?EIO=4&transport=polling&t=Pri6vX_ HTTP/1.1" 200 -
+2026-04-08 13:30:41,126 [Thread-4 (process_request_thread)] INFO    127.0.0.1 - - [08/Apr/2026 13:30:41] "POST /socket.io/?EIO=4&transport=polling&t=Pri6vYN&sid=Zb14A-SS1mkR5-ZnAAAA HTTP/1.1" 200 -
+2026-04-08 13:30:41,133 [Thread-7 (process_request_thread)] INFO    127.0.0.1 - - [08/Apr/2026 13:30:41] "GET /socket.io/?EIO=4&transport=polling&t=Pri6vYQ&sid=Zb14A-SS1mkR5-ZnAAAA HTTP/1.1" 200 -
+2026-04-08 13:30:41,155 [Thread-9 (process_request_thread)] INFO    127.0.0.1 - - [08/Apr/2026 13:30:41] "GET /video/cargo?1775635241143 HTTP/1.1" 200 -
+2026-04-08 13:30:41,155 [Thread-10 (process_request_thread)] INFO    127.0.0.1 - - [08/Apr/2026 13:30:41] "GET /video/driver?1775635241144 HTTP/1.1" 200 -
+2026-04-08 13:30:48,689 [Cam-driver            ] ERROR   [Cam-driver] Cannot open camera 4
+2026-04-08 13:30:49,286 [Thread-11 (process_request_thread)] INFO    127.0.0.1 - - [08/Apr/2026 13:30:49] "GET / HTTP/1.1" 200 -
+2026-04-08 13:30:49,311 [Thread-5 (process_request_thread)] INFO    127.0.0.1 - - [08/Apr/2026 13:30:49] "GET /socket.io/?EIO=4&transport=websocket&sid=Zb14A-SS1mkR5-ZnAAAA HTTP/1.1" 200 -
+2026-04-08 13:30:49,367 [Thread-12 (process_request_thread)] INFO    127.0.0.1 - - [08/Apr/2026 13:30:49] "GET /video/vehicle HTTP/1.1" 200 -
+2026-04-08 13:30:49,369 [Thread-14 (process_request_thread)] INFO    127.0.0.1 - - [08/Apr/2026 13:30:49] "GET /socket.io/?EIO=4&transport=polling&t=Pri6xZ7 HTTP/1.1" 200 -
+2026-04-08 13:30:49,371 [Thread-13 (process_request_thread)] INFO    127.0.0.1 - - [08/Apr/2026 13:30:49] "GET /video/cargo HTTP/1.1" 200 -
+2026-04-08 13:30:49,380 [Thread-15 (process_request_thread)] INFO    127.0.0.1 - - [08/Apr/2026 13:30:49] "GET /video/driver HTTP/1.1" 200 -
+2026-04-08 13:30:49,391 [Thread-17 (process_request_thread)] INFO    127.0.0.1 - - [08/Apr/2026 13:30:49] "POST /socket.io/?EIO=4&transport=polling&t=Pri6xZZ&sid=0Rbj1Kb5D3_eSf4SAAAC HTTP/1.1" 200 -
+2026-04-08 13:30:49,397 [Thread-20 (process_request_thread)] INFO    127.0.0.1 - - [08/Apr/2026 13:30:49] "GET /socket.io/?EIO=4&transport=polling&t=Pri6xZc&sid=0Rbj1Kb5D3_eSf4SAAAC HTTP/1.1" 200 -
+2026-04-08 13:30:49,417 [Thread-21 (process_request_thread)] INFO    127.0.0.1 - - [08/Apr/2026 13:30:49] "GET /video/cargo?1775635249403 HTTP/1.1" 200 -
+2026-04-08 13:30:49,424 [Thread-22 (process_request_thread)] INFO    127.0.0.1 - - [08/Apr/2026 13:30:49] "GET /video/driver?1775635249403 HTTP/1.1" 200 -
+2026-04-08 13:30:49,651 [Thread-24 (process_request_thread)] INFO    127.0.0.1 - - [08/Apr/2026 13:30:49] "GET / HTTP/1.1" 200 -
+2026-04-08 13:30:49,678 [Thread-18 (process_request_thread)] INFO    127.0.0.1 - - [08/Apr/2026 13:30:49] "GET /socket.io/?EIO=4&transport=websocket&sid=0Rbj1Kb5D3_eSf4SAAAC HTTP/1.1" 200 -
+2026-04-08 13:30:49,730 [Thread-25 (process_request_thread)] INFO    127.0.0.1 - - [08/Apr/2026 13:30:49] "GET /video/vehicle HTTP/1.1" 200 -
+2026-04-08 13:30:49,734 [Thread-27 (process_request_thread)] INFO    127.0.0.1 - - [08/Apr/2026 13:30:49] "GET /video/driver HTTP/1.1" 200 -
+2026-04-08 13:30:49,734 [Thread-26 (process_request_thread)] INFO    127.0.0.1 - - [08/Apr/2026 13:30:49] "GET /video/cargo HTTP/1.1" 200 -
+2026-04-08 13:30:49,738 [Thread-28 (process_request_thread)] INFO    127.0.0.1 - - [08/Apr/2026 13:30:49] "GET /socket.io/?EIO=4&transport=polling&t=Pri6xf2 HTTP/1.1" 200 -
+2026-04-08 13:30:49,756 [Thread-30 (process_request_thread)] INFO    127.0.0.1 - - [08/Apr/2026 13:30:49] "POST /socket.io/?EIO=4&transport=polling&t=Pri6xfK&sid=vjEYG113fWPRQTjMAAAE HTTP/1.1" 200 -
+2026-04-08 13:30:49,757 [Thread-32 (process_request_thread)] INFO    127.0.0.1 - - [08/Apr/2026 13:30:49] "GET /socket.io/?EIO=4&transport=polling&t=Pri6xfM&sid=vjEYG113fWPRQTjMAAAE HTTP/1.1" 200 -
+2026-04-08 13:30:49,775 [Thread-34 (process_request_thread)] INFO    127.0.0.1 - - [08/Apr/2026 13:30:49] "GET /socket.io/?EIO=4&transport=polling&t=Pri6xfe&sid=vjEYG113fWPRQTjMAAAE HTTP/1.1" 200 -
+2026-04-08 13:30:49,790 [Thread-35 (process_request_thread)] INFO    127.0.0.1 - - [08/Apr/2026 13:30:49] "GET /video/cargo?1775635249769 HTTP/1.1" 200 -
+2026-04-08 13:30:49,790 [Thread-36 (process_request_thread)] INFO    127.0.0.1 - - [08/Apr/2026 13:30:49] "GET /video/driver?1775635249769 HTTP/1.1" 200 -
+2026-04-08 13:30:53,205 [Thread-31 (process_request_thread)] INFO    127.0.0.1 - - [08/Apr/2026 13:30:53] "GET /socket.io/?EIO=4&transport=websocket&sid=vjEYG113fWPRQTjMAAAE HTTP/1.1" 200 -
+2026-04-08 13:30:59,163 [Cam-driver            ] ERROR   [Cam-driver] Cannot open camera 4
+2026-04-08 13:31:07,187 [Thread-38 (process_request_thread)] INFO    127.0.0.1 - - [08/Apr/2026 13:31:07] "GET / HTTP/1.1" 200 -
+2026-04-08 13:31:07,236 [Thread-40 (process_request_thread)] INFO    127.0.0.1 - - [08/Apr/2026 13:31:07] "GET /video/cargo HTTP/1.1" 200 -
+2026-04-08 13:31:07,237 [Thread-39 (process_request_thread)] INFO    127.0.0.1 - - [08/Apr/2026 13:31:07] "GET /video/vehicle HTTP/1.1" 200 -
+2026-04-08 13:31:07,413 [Thread-41 (process_request_thread)] INFO    127.0.0.1 - - [08/Apr/2026 13:31:07] "GET /video/driver HTTP/1.1" 200 -
+2026-04-08 13:31:07,426 [Thread-42 (process_request_thread)] INFO    127.0.0.1 - - [08/Apr/2026 13:31:07] "GET /socket.io/?EIO=4&transport=polling&t=Pri6_zH HTTP/1.1" 200 -
+2026-04-08 13:31:07,472 [Thread-44 (process_request_thread)] INFO    127.0.0.1 - - [08/Apr/2026 13:31:07] "POST /socket.io/?EIO=4&transport=polling&t=Pri6_-9&sid=HrclzuU53MXx-wnlAAAG HTTP/1.1" 200 -
+2026-04-08 13:31:07,496 [Thread-46 (process_request_thread)] INFO    127.0.0.1 - - [08/Apr/2026 13:31:07] "GET /socket.io/?EIO=4&transport=polling&t=Pri6_-C&sid=HrclzuU53MXx-wnlAAAG HTTP/1.1" 200 -
+2026-04-08 13:31:07,531 [Thread-48 (process_request_thread)] INFO    127.0.0.1 - - [08/Apr/2026 13:31:07] "GET /socket.io/?EIO=4&transport=polling&t=Pri6__5&sid=HrclzuU53MXx-wnlAAAG HTTP/1.1" 200 -
+2026-04-08 13:31:07,548 [Thread-49 (process_request_thread)] INFO    127.0.0.1 - - [08/Apr/2026 13:31:07] "GET /video/cargo?1775635267527 HTTP/1.1" 200 -
+2026-04-08 13:31:07,549 [Thread-50 (process_request_thread)] INFO    127.0.0.1 - - [08/Apr/2026 13:31:07] "GET /video/driver?1775635267527 HTTP/1.1" 200 -
+2026-04-08 13:31:09,638 [Cam-driver            ] ERROR   [Cam-driver] Cannot open camera 4
+2026-04-08 13:31:14,406 [GPSManager            ] WARNING GPS module not found. Retrying in 10s …
+2026-04-08 13:31:20,114 [Cam-driver            ] ERROR   [Cam-driver] Cannot open camera 4
+2026-04-08 13:31:24,266 [Thread-52 (process_request_thread)] INFO    172.24.0.29 - - [08/Apr/2026 13:31:24] "GET / HTTP/1.1" 200 -
+2026-04-08 13:31:24,315 [Thread-53 (process_request_thread)] INFO    172.24.0.29 - - [08/Apr/2026 13:31:24] "GET /video/vehicle HTTP/1.1" 200 -
+2026-04-08 13:31:24,318 [Thread-54 (process_request_thread)] INFO    172.24.0.29 - - [08/Apr/2026 13:31:24] "GET /video/cargo HTTP/1.1" 200 -
+2026-04-08 13:31:24,496 [Thread-55 (process_request_thread)] INFO    172.24.0.29 - - [08/Apr/2026 13:31:24] "GET /video/driver HTTP/1.1" 200 -
+2026-04-08 13:31:24,507 [Thread-56 (process_request_thread)] INFO    172.24.0.29 - - [08/Apr/2026 13:31:24] "GET /socket.io/?EIO=4&transport=polling&t=Pri748C HTTP/1.1" 200 -
+2026-04-08 13:31:24,579 [Thread-58 (process_request_thread)] INFO    172.24.0.29 - - [08/Apr/2026 13:31:24] "POST /socket.io/?EIO=4&transport=polling&t=Pri7498&sid=nKH2dS_MqxcjJq1NAAAI HTTP/1.1" 200 -
+2026-04-08 13:31:24,587 [Thread-60 (process_request_thread)] INFO    172.24.0.29 - - [08/Apr/2026 13:31:24] "GET /socket.io/?EIO=4&transport=polling&t=Pri749J&sid=nKH2dS_MqxcjJq1NAAAI HTTP/1.1" 200 -
+2026-04-08 13:31:24,635 [Thread-62 (process_request_thread)] INFO    172.24.0.29 - - [08/Apr/2026 13:31:24] "GET /socket.io/?EIO=4&transport=polling&t=Pri74AK&sid=nKH2dS_MqxcjJq1NAAAI HTTP/1.1" 200 -
+2026-04-08 13:31:24,647 [Thread-63 (process_request_thread)] INFO    172.24.0.29 - - [08/Apr/2026 13:31:24] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2026-04-08 13:31:25,051 [Thread-65 (process_request_thread)] INFO    172.24.0.29 - - [08/Apr/2026 13:31:25] "GET /video/cargo?1775635284629 HTTP/1.1" 200 -
+2026-04-08 13:31:25,073 [Thread-66 (process_request_thread)] INFO    172.24.0.29 - - [08/Apr/2026 13:31:25] "GET /video/driver?1775635284629 HTTP/1.1" 200 -
+2026-04-08 13:31:30,602 [Cam-driver            ] ERROR   [Cam-driver] Cannot open camera 4
+2026-04-08 13:31:31,143 [Thread-68 (process_request_thread)] INFO    172.24.0.29 - - [08/Apr/2026 13:31:31] "GET /video/driver?1775635291124 HTTP/1.1" 200 -
+2026-04-08 13:31:31,143 [Thread-69 (process_request_thread)] INFO    172.24.0.29 - - [08/Apr/2026 13:31:31] "GET /video/cargo?1775635291125 HTTP/1.1" 200 -
+2026-04-08 13:31:32,010 [Thread-72 (process_request_thread)] INFO    172.24.0.29 - - [08/Apr/2026 13:31:32] "GET /video/driver?1775635291996 HTTP/1.1" 200 -
+2026-04-08 13:31:32,012 [Thread-71 (process_request_thread)] INFO    172.24.0.29 - - [08/Apr/2026 13:31:32] "GET /video/cargo?1775635291996 HTTP/1.1" 200 -
+2026-04-08 13:31:32,614 [Thread-75 (process_request_thread)] INFO    172.24.0.29 - - [08/Apr/2026 13:31:32] "GET /video/driver?1775635292600 HTTP/1.1" 200 -
+2026-04-08 13:31:32,618 [Thread-76 (process_request_thread)] INFO    172.24.0.29 - - [08/Apr/2026 13:31:32] "GET /video/cargo?1775635292600 HTTP/1.1" 200 -
+2026-04-08 13:31:33,254 [Thread-78 (process_request_thread)] INFO    172.24.0.29 - - [08/Apr/2026 13:31:33] "GET /video/cargo?1775635293239 HTTP/1.1" 200 -
+2026-04-08 13:31:33,259 [Thread-79 (process_request_thread)] INFO    172.24.0.29 - - [08/Apr/2026 13:31:33] "GET /video/driver?1775635293239 HTTP/1.1" 200 -
+2026-04-08 13:31:33,923 [Thread-82 (process_request_thread)] INFO    172.24.0.29 - - [08/Apr/2026 13:31:33] "GET /video/cargo?1775635293907 HTTP/1.1" 200 -
+2026-04-08 13:31:33,927 [Thread-81 (process_request_thread)] INFO    172.24.0.29 - - [08/Apr/2026 13:31:33] "GET /video/driver?1775635293907 HTTP/1.1" 200 -
+2026-04-08 13:31:35,372 [Thread-84 (process_request_thread)] INFO    172.24.0.29 - - [08/Apr/2026 13:31:35] "GET /video/cargo?1775635295358 HTTP/1.1" 200 -
+2026-04-08 13:31:35,373 [Thread-85 (process_request_thread)] INFO    172.24.0.29 - - [08/Apr/2026 13:31:35] "GET /video/driver?1775635295358 HTTP/1.1" 200 -
+2026-04-08 13:31:39,537 [Thread-87 (process_request_thread)] INFO    172.24.0.29 - - [08/Apr/2026 13:31:39] "GET /video/driver?1775635299517 HTTP/1.1" 200 -
+2026-04-08 13:31:39,540 [Thread-88 (process_request_thread)] INFO    172.24.0.29 - - [08/Apr/2026 13:31:39] "GET /video/cargo?1775635299517 HTTP/1.1" 200 -
+2026-04-08 13:31:40,421 [Thread-91 (process_request_thread)] INFO    172.24.0.29 - - [08/Apr/2026 13:31:40] "GET /video/driver?1775635300409 HTTP/1.1" 200 -
+2026-04-08 13:31:40,422 [Thread-90 (process_request_thread)] INFO    172.24.0.29 - - [08/Apr/2026 13:31:40] "GET /video/cargo?1775635300409 HTTP/1.1" 200 -
+2026-04-08 13:31:41,078 [Cam-driver            ] ERROR   [Cam-driver] Cannot open camera 4
+2026-04-08 13:31:41,232 [Thread-93 (process_request_thread)] INFO    172.24.0.29 - - [08/Apr/2026 13:31:41] "GET /video/driver?1775635301214 HTTP/1.1" 200 -
+2026-04-08 13:31:41,233 [Thread-94 (process_request_thread)] INFO    172.24.0.29 - - [08/Apr/2026 13:31:41] "GET /video/cargo?1775635301214 HTTP/1.1" 200 -
+2026-04-08 13:31:42,000 [Thread-96 (process_request_thread)] INFO    172.24.0.29 - - [08/Apr/2026 13:31:42] "GET /video/cargo?1775635301977 HTTP/1.1" 200 -
+2026-04-08 13:31:42,001 [Thread-97 (process_request_thread)] INFO    172.24.0.29 - - [08/Apr/2026 13:31:42] "GET /video/driver?1775635301978 HTTP/1.1" 200 -
+2026-04-08 13:31:43,219 [Thread-100 (process_request_thread)] INFO    172.24.0.29 - - [08/Apr/2026 13:31:43] "GET /video/cargo?1775635303205 HTTP/1.1" 200 -
+2026-04-08 13:31:43,219 [Thread-99 (process_request_thread)] INFO    172.24.0.29 - - [08/Apr/2026 13:31:43] "GET /video/driver?1775635303205 HTTP/1.1" 200 -
+2026-04-08 13:31:43,810 [Thread-102 (process_request_thread)] INFO    172.24.0.29 - - [08/Apr/2026 13:31:43] "GET /video/cargo?1775635303794 HTTP/1.1" 200 -
+2026-04-08 13:31:43,811 [Thread-103 (process_request_thread)] INFO    172.24.0.29 - - [08/Apr/2026 13:31:43] "GET /video/driver?1775635303794 HTTP/1.1" 200 -
+2026-04-08 13:31:44,818 [Thread-105 (process_request_thread)] INFO    172.24.0.29 - - [08/Apr/2026 13:31:44] "GET /video/driver?1775635304806 HTTP/1.1" 200 -
+2026-04-08 13:31:44,823 [Thread-106 (process_request_thread)] INFO    172.24.0.29 - - [08/Apr/2026 13:31:44] "GET /video/cargo?1775635304806 HTTP/1.1" 200 -
+2026-04-08 13:31:45,971 [Thread-109 (process_request_thread)] INFO    172.24.0.29 - - [08/Apr/2026 13:31:45] "GET /video/driver?1775635305959 HTTP/1.1" 200 -
+2026-04-08 13:31:45,972 [Thread-108 (process_request_thread)] INFO    172.24.0.29 - - [08/Apr/2026 13:31:45] "GET /video/cargo?1775635305959 HTTP/1.1" 200 -
+2026-04-08 13:31:48,465 [Thread-112 (process_request_thread)] INFO    172.24.0.29 - - [08/Apr/2026 13:31:48] "GET /video/cargo?1775635308444 HTTP/1.1" 200 -
+2026-04-08 13:31:48,468 [Thread-111 (process_request_thread)] INFO    172.24.0.29 - - [08/Apr/2026 13:31:48] "GET /video/driver?1775635308443 HTTP/1.1" 200 -
+2026-04-08 13:31:51,542 [Cam-driver            ] ERROR   [Cam-driver] Cannot open camera 4
+2026-04-08 13:31:52,038 [Thread-115 (process_request_thread)] INFO    172.24.0.29 - - [08/Apr/2026 13:31:52] "GET /video/cargo?1775635312024 HTTP/1.1" 200 -
+2026-04-08 13:31:52,042 [Thread-116 (process_request_thread)] INFO    172.24.0.29 - - [08/Apr/2026 13:31:52] "GET /video/driver?1775635312024 HTTP/1.1" 200 -
+2026-04-08 13:31:52,616 [Thread-118 (process_request_thread)] INFO    172.24.0.29 - - [08/Apr/2026 13:31:52] "GET /video/driver?1775635312598 HTTP/1.1" 200 -
+2026-04-08 13:31:52,618 [Thread-119 (process_request_thread)] INFO    172.24.0.29 - - [08/Apr/2026 13:31:52] "GET /video/cargo?1775635312598 HTTP/1.1" 200 -
+2026-04-08 13:31:57,412 [GPSManager            ] WARNING GPS module not found. Retrying in 10s …
+2026-04-08 13:32:02,022 [Cam-driver            ] ERROR   [Cam-driver] Cannot open camera 4
+2026-04-08 13:32:02,547 [Thread-122 (process_request_thread)] INFO    172.24.0.29 - - [08/Apr/2026 13:32:02] "GET /video/cargo?1775635322527 HTTP/1.1" 200 -
+2026-04-08 13:32:02,549 [Thread-123 (process_request_thread)] INFO    172.24.0.29 - - [08/Apr/2026 13:32:02] "GET /video/driver?1775635322527 HTTP/1.1" 200 -
+2026-04-08 13:32:03,186 [Thread-125 (process_request_thread)] INFO    172.24.0.29 - - [08/Apr/2026 13:32:03] "GET /video/driver?1775635323173 HTTP/1.1" 200 -
+2026-04-08 13:32:03,187 [Thread-126 (process_request_thread)] INFO    172.24.0.29 - - [08/Apr/2026 13:32:03] "GET /video/cargo?1775635323173 HTTP/1.1" 200 -
+2026-04-08 13:32:06,161 [Thread-129 (process_request_thread)] INFO    172.24.0.29 - - [08/Apr/2026 13:32:06] "GET /video/driver?1775635326144 HTTP/1.1" 200 -
+2026-04-08 13:32:06,162 [Thread-128 (process_request_thread)] INFO    172.24.0.29 - - [08/Apr/2026 13:32:06] "GET /video/cargo?1775635326144 HTTP/1.1" 200 -
+2026-04-08 13:32:10,149 [Thread-130 (process_request_thread)] INFO    172.24.0.29 - - [08/Apr/2026 13:32:10] "GET / HTTP/1.1" 200 -
+2026-04-08 13:32:10,182 [Thread-59 (process_request_thread)] INFO    172.24.0.29 - - [08/Apr/2026 13:32:10] "GET /socket.io/?EIO=4&transport=websocket&sid=nKH2dS_MqxcjJq1NAAAI HTTP/1.1" 200 -
+2026-04-08 13:32:10,242 [Thread-133 (process_request_thread)] INFO    172.24.0.29 - - [08/Apr/2026 13:32:10] "GET /video/driver HTTP/1.1" 200 -
+2026-04-08 13:32:10,242 [Thread-131 (process_request_thread)] INFO    172.24.0.29 - - [08/Apr/2026 13:32:10] "GET /video/vehicle HTTP/1.1" 200 -
+2026-04-08 13:32:10,243 [Thread-132 (process_request_thread)] INFO    172.24.0.29 - - [08/Apr/2026 13:32:10] "GET /video/cargo HTTP/1.1" 200 -
+2026-04-08 13:32:10,246 [Thread-134 (process_request_thread)] INFO    172.24.0.29 - - [08/Apr/2026 13:32:10] "GET /socket.io/?EIO=4&transport=polling&t=Pri7FIz HTTP/1.1" 200 -
+2026-04-08 13:32:10,271 [Thread-136 (process_request_thread)] INFO    172.24.0.29 - - [08/Apr/2026 13:32:10] "POST /socket.io/?EIO=4&transport=polling&t=Pri7FJK&sid=uh5F3UibfDjZlbk-AAAK HTTP/1.1" 200 -
+2026-04-08 13:32:10,276 [Thread-139 (process_request_thread)] INFO    172.24.0.29 - - [08/Apr/2026 13:32:10] "GET /socket.io/?EIO=4&transport=polling&t=Pri7FJO&sid=uh5F3UibfDjZlbk-AAAK HTTP/1.1" 200 -
+2026-04-08 13:32:10,342 [Thread-141 (process_request_thread)] INFO    172.24.0.29 - - [08/Apr/2026 13:32:10] "GET /video/cargo?1775635330326 HTTP/1.1" 200 -
+2026-04-08 13:32:10,351 [Thread-142 (process_request_thread)] INFO    172.24.0.29 - - [08/Apr/2026 13:32:10] "GET /video/driver?1775635330326 HTTP/1.1" 200 -
+2026-04-08 13:32:10,505 [Thread-143 (process_request_thread)] INFO    172.24.0.29 - - [08/Apr/2026 13:32:10] "GET / HTTP/1.1" 200 -
+2026-04-08 13:32:10,536 [Thread-137 (process_request_thread)] INFO    172.24.0.29 - - [08/Apr/2026 13:32:10] "GET /socket.io/?EIO=4&transport=websocket&sid=uh5F3UibfDjZlbk-AAAK HTTP/1.1" 200 -
+2026-04-08 13:32:10,614 [Thread-144 (process_request_thread)] INFO    172.24.0.29 - - [08/Apr/2026 13:32:10] "GET /video/vehicle HTTP/1.1" 200 -
+2026-04-08 13:32:10,622 [Thread-145 (process_request_thread)] INFO    172.24.0.29 - - [08/Apr/2026 13:32:10] "GET /video/cargo HTTP/1.1" 200 -
+2026-04-08 13:32:10,627 [Thread-147 (process_request_thread)] INFO    172.24.0.29 - - [08/Apr/2026 13:32:10] "GET /video/driver HTTP/1.1" 200 -
+2026-04-08 13:32:10,628 [Thread-146 (process_request_thread)] INFO    172.24.0.29 - - [08/Apr/2026 13:32:10] "GET /socket.io/?EIO=4&transport=polling&t=Pri7FOT HTTP/1.1" 200 -
+2026-04-08 13:32:10,659 [Thread-149 (process_request_thread)] INFO    172.24.0.29 - - [08/Apr/2026 13:32:10] "POST /socket.io/?EIO=4&transport=polling&t=Pri7FPP&sid=6F6z_z6hEdSs5_UkAAAM HTTP/1.1" 200 -
+2026-04-08 13:32:10,668 [Thread-151 (process_request_thread)] INFO    172.24.0.29 - - [08/Apr/2026 13:32:10] "GET /socket.io/?EIO=4&transport=polling&t=Pri7FPQ&sid=6F6z_z6hEdSs5_UkAAAM HTTP/1.1" 200 -
+2026-04-08 13:32:10,772 [Thread-154 (process_request_thread)] INFO    172.24.0.29 - - [08/Apr/2026 13:32:10] "GET /video/cargo?1775635330751 HTTP/1.1" 200 -
+2026-04-08 13:32:10,776 [Thread-155 (process_request_thread)] INFO    172.24.0.29 - - [08/Apr/2026 13:32:10] "GET /video/driver?1775635330752 HTTP/1.1" 200 -
+2026-04-08 13:32:10,968 [Thread-156 (process_request_thread)] INFO    172.24.0.29 - - [08/Apr/2026 13:32:10] "GET / HTTP/1.1" 200 -
+2026-04-08 13:32:10,992 [Thread-150 (process_request_thread)] INFO    172.24.0.29 - - [08/Apr/2026 13:32:10] "GET /socket.io/?EIO=4&transport=websocket&sid=6F6z_z6hEdSs5_UkAAAM HTTP/1.1" 200 -
+2026-04-08 13:32:11,058 [Thread-159 (process_request_thread)] INFO    172.24.0.29 - - [08/Apr/2026 13:32:11] "GET /socket.io/?EIO=4&transport=polling&t=Pri7FVZ HTTP/1.1" 200 -
+2026-04-08 13:32:11,058 [Thread-158 (process_request_thread)] INFO    172.24.0.29 - - [08/Apr/2026 13:32:11] "GET /video/cargo HTTP/1.1" 200 -
+2026-04-08 13:32:11,059 [Thread-157 (process_request_thread)] INFO    172.24.0.29 - - [08/Apr/2026 13:32:11] "GET /video/vehicle HTTP/1.1" 200 -
+2026-04-08 13:32:11,071 [Thread-160 (process_request_thread)] INFO    172.24.0.29 - - [08/Apr/2026 13:32:11] "GET /video/driver HTTP/1.1" 200 -
+2026-04-08 13:32:11,083 [Thread-162 (process_request_thread)] INFO    172.24.0.29 - - [08/Apr/2026 13:32:11] "POST /socket.io/?EIO=4&transport=polling&t=Pri7FVy&sid=kFUgu_eih99dWe36AAAO HTTP/1.1" 200 -
+2026-04-08 13:32:11,084 [Thread-163 (process_request_thread)] INFO    172.24.0.29 - - [08/Apr/2026 13:32:11] "GET /socket.io/?EIO=4&transport=polling&t=Pri7FV_&sid=kFUgu_eih99dWe36AAAO HTTP/1.1" 200 -
+2026-04-08 13:32:11,111 [Thread-166 (process_request_thread)] INFO    172.24.0.29 - - [08/Apr/2026 13:32:11] "GET /socket.io/?EIO=4&transport=polling&t=Pri7FWV&sid=kFUgu_eih99dWe36AAAO HTTP/1.1" 200 -
+2026-04-08 13:32:11,117 [Thread-167 (process_request_thread)] INFO    172.24.0.29 - - [08/Apr/2026 13:32:11] "GET /video/cargo?1775635331104 HTTP/1.1" 200 -
+2026-04-08 13:32:11,135 [Thread-168 (process_request_thread)] INFO    172.24.0.29 - - [08/Apr/2026 13:32:11] "GET /video/driver?1775635331104 HTTP/1.1" 200 -
+2026-04-08 13:32:12,345 [Thread-170 (process_request_thread)] INFO    172.24.0.29 - - [08/Apr/2026 13:32:12] "GET / HTTP/1.1" 200 -
+2026-04-08 13:32:12,369 [Thread-164 (process_request_thread)] INFO    172.24.0.29 - - [08/Apr/2026 13:32:12] "GET /socket.io/?EIO=4&transport=websocket&sid=kFUgu_eih99dWe36AAAO HTTP/1.1" 200 -
+2026-04-08 13:32:12,437 [Thread-173 (process_request_thread)] INFO    172.24.0.29 - - [08/Apr/2026 13:32:12] "GET /video/cargo HTTP/1.1" 200 -
+2026-04-08 13:32:12,439 [Thread-171 (process_request_thread)] INFO    172.24.0.29 - - [08/Apr/2026 13:32:12] "GET /video/vehicle HTTP/1.1" 200 -
+2026-04-08 13:32:12,440 [Thread-174 (process_request_thread)] INFO    172.24.0.29 - - [08/Apr/2026 13:32:12] "GET /video/driver HTTP/1.1" 200 -
+2026-04-08 13:32:12,442 [Thread-172 (process_request_thread)] INFO    172.24.0.29 - - [08/Apr/2026 13:32:12] "GET /socket.io/?EIO=4&transport=polling&t=Pri7Fr1 HTTP/1.1" 200 -
+2026-04-08 13:32:12,459 [Thread-176 (process_request_thread)] INFO    172.24.0.29 - - [08/Apr/2026 13:32:12] "POST /socket.io/?EIO=4&transport=polling&t=Pri7FrY&sid=g-HjFv-_O5FRt05nAAAQ HTTP/1.1" 200 -
+2026-04-08 13:32:12,462 [Thread-178 (process_request_thread)] INFO    172.24.0.29 - - [08/Apr/2026 13:32:12] "GET /socket.io/?EIO=4&transport=polling&t=Pri7Fra&sid=g-HjFv-_O5FRt05nAAAQ HTTP/1.1" 200 -
+2026-04-08 13:32:12,482 [Thread-180 (process_request_thread)] INFO    172.24.0.29 - - [08/Apr/2026 13:32:12] "GET /socket.io/?EIO=4&transport=polling&t=Pri7Frr&sid=g-HjFv-_O5FRt05nAAAQ HTTP/1.1" 200 -
+2026-04-08 13:32:12,489 [Thread-181 (process_request_thread)] INFO    172.24.0.29 - - [08/Apr/2026 13:32:12] "GET /video/cargo?1775635332470 HTTP/1.1" 200 -
+2026-04-08 13:32:12,498 [Thread-182 (process_request_thread)] INFO    172.24.0.29 - - [08/Apr/2026 13:32:12] "GET /video/driver?1775635332470 HTTP/1.1" 200 -
+2026-04-08 13:32:12,498 [Cam-driver            ] ERROR   [Cam-driver] Cannot open camera 4
+2026-04-08 13:32:12,831 [Thread-184 (process_request_thread)] INFO    172.24.0.29 - - [08/Apr/2026 13:32:12] "GET / HTTP/1.1" 200 -
+2026-04-08 13:32:12,858 [Thread-177 (process_request_thread)] INFO    172.24.0.29 - - [08/Apr/2026 13:32:12] "GET /socket.io/?EIO=4&transport=websocket&sid=g-HjFv-_O5FRt05nAAAQ HTTP/1.1" 200 -
+2026-04-08 13:32:12,911 [Thread-187 (process_request_thread)] INFO    172.24.0.29 - - [08/Apr/2026 13:32:12] "GET /socket.io/?EIO=4&transport=polling&t=Pri7FyR HTTP/1.1" 200 -
+2026-04-08 13:32:12,911 [Thread-186 (process_request_thread)] INFO    172.24.0.29 - - [08/Apr/2026 13:32:12] "GET /video/cargo HTTP/1.1" 200 -
+2026-04-08 13:32:12,911 [Thread-185 (process_request_thread)] INFO    172.24.0.29 - - [08/Apr/2026 13:32:12] "GET /video/vehicle HTTP/1.1" 200 -
+2026-04-08 13:32:12,915 [Thread-188 (process_request_thread)] INFO    172.24.0.29 - - [08/Apr/2026 13:32:12] "GET /video/driver HTTP/1.1" 200 -
+2026-04-08 13:32:12,935 [Thread-190 (process_request_thread)] INFO    172.24.0.29 - - [08/Apr/2026 13:32:12] "POST /socket.io/?EIO=4&transport=polling&t=Pri7Fy-&sid=fjimpXQcz1TNDHpRAAAS HTTP/1.1" 200 -
+2026-04-08 13:32:12,936 [Thread-192 (process_request_thread)] INFO    172.24.0.29 - - [08/Apr/2026 13:32:12] "GET /socket.io/?EIO=4&transport=polling&t=Pri7Fz0&sid=fjimpXQcz1TNDHpRAAAS HTTP/1.1" 200 -
+2026-04-08 13:32:12,963 [Thread-195 (process_request_thread)] INFO    172.24.0.29 - - [08/Apr/2026 13:32:12] "GET /video/cargo?1775635332952 HTTP/1.1" 200 -
+2026-04-08 13:32:12,969 [Thread-196 (process_request_thread)] INFO    172.24.0.29 - - [08/Apr/2026 13:32:12] "GET /video/driver?1775635332952 HTTP/1.1" 200 -
+2026-04-08 13:32:13,257 [Thread-197 (process_request_thread)] INFO    172.24.0.29 - - [08/Apr/2026 13:32:13] "GET / HTTP/1.1" 200 -
+2026-04-08 13:32:13,285 [Thread-191 (process_request_thread)] INFO    172.24.0.29 - - [08/Apr/2026 13:32:13] "GET /socket.io/?EIO=4&transport=websocket&sid=fjimpXQcz1TNDHpRAAAS HTTP/1.1" 200 -
+2026-04-08 13:32:13,346 [Thread-200 (process_request_thread)] INFO    172.24.0.29 - - [08/Apr/2026 13:32:13] "GET /socket.io/?EIO=4&transport=polling&t=Pri7G3O HTTP/1.1" 200 -
+2026-04-08 13:32:13,349 [Thread-198 (process_request_thread)] INFO    172.24.0.29 - - [08/Apr/2026 13:32:13] "GET /video/vehicle HTTP/1.1" 200 -
+2026-04-08 13:32:13,349 [Thread-199 (process_request_thread)] INFO    172.24.0.29 - - [08/Apr/2026 13:32:13] "GET /video/cargo HTTP/1.1" 200 -
+2026-04-08 13:32:13,352 [Thread-201 (process_request_thread)] INFO    172.24.0.29 - - [08/Apr/2026 13:32:13] "GET /video/driver HTTP/1.1" 200 -
+2026-04-08 13:32:13,369 [Thread-203 (process_request_thread)] INFO    172.24.0.29 - - [08/Apr/2026 13:32:13] "POST /socket.io/?EIO=4&transport=polling&t=Pri7G3j&sid=X1IUYgAtiq9NP1EYAAAU HTTP/1.1" 200 -
+2026-04-08 13:32:13,370 [Thread-205 (process_request_thread)] INFO    172.24.0.29 - - [08/Apr/2026 13:32:13] "GET /socket.io/?EIO=4&transport=polling&t=Pri7G3l&sid=X1IUYgAtiq9NP1EYAAAU HTTP/1.1" 200 -
+2026-04-08 13:32:13,409 [Thread-207 (process_request_thread)] INFO    172.24.0.29 - - [08/Apr/2026 13:32:13] "GET /video/cargo?1775635333391 HTTP/1.1" 200 -
+2026-04-08 13:32:13,410 [Thread-208 (process_request_thread)] INFO    172.24.0.29 - - [08/Apr/2026 13:32:13] "GET /video/driver?1775635333392 HTTP/1.1" 200 -
+2026-04-08 13:32:13,646 [Thread-210 (process_request_thread)] INFO    172.24.0.29 - - [08/Apr/2026 13:32:13] "GET / HTTP/1.1" 200 -
+2026-04-08 13:32:13,669 [Thread-204 (process_request_thread)] INFO    172.24.0.29 - - [08/Apr/2026 13:32:13] "GET /socket.io/?EIO=4&transport=websocket&sid=X1IUYgAtiq9NP1EYAAAU HTTP/1.1" 200 -
+2026-04-08 13:32:13,712 [Thread-211 (process_request_thread)] INFO    172.24.0.29 - - [08/Apr/2026 13:32:13] "GET /video/vehicle HTTP/1.1" 200 -
+2026-04-08 13:32:13,713 [Thread-212 (process_request_thread)] INFO    172.24.0.29 - - [08/Apr/2026 13:32:13] "GET /video/cargo HTTP/1.1" 200 -
+2026-04-08 13:32:13,727 [Thread-213 (process_request_thread)] INFO    172.24.0.29 - - [08/Apr/2026 13:32:13] "GET /socket.io/?EIO=4&transport=polling&t=Pri7G9I HTTP/1.1" 200 -
+2026-04-08 13:32:13,733 [Thread-215 (process_request_thread)] INFO    172.24.0.29 - - [08/Apr/2026 13:32:13] "GET /video/driver HTTP/1.1" 200 -
+2026-04-08 13:32:13,749 [Thread-216 (process_request_thread)] INFO    172.24.0.29 - - [08/Apr/2026 13:32:13] "POST /socket.io/?EIO=4&transport=polling&t=Pri7G9h&sid=iuD8uFHG0h5pp8RsAAAW HTTP/1.1" 200 -
+2026-04-08 13:32:13,756 [Thread-218 (process_request_thread)] INFO    172.24.0.29 - - [08/Apr/2026 13:32:13] "GET /socket.io/?EIO=4&transport=polling&t=Pri7G9j&sid=iuD8uFHG0h5pp8RsAAAW HTTP/1.1" 200 -
+2026-04-08 13:32:13,834 [Thread-222 (process_request_thread)] INFO    172.24.0.29 - - [08/Apr/2026 13:32:13] "GET /video/driver?1775635333816 HTTP/1.1" 200 -
+2026-04-08 13:32:13,841 [Thread-221 (process_request_thread)] INFO    172.24.0.29 - - [08/Apr/2026 13:32:13] "GET /video/cargo?1775635333816 HTTP/1.1" 200 -
+2026-04-08 13:32:18,055 [Thread-223 (process_request_thread)] INFO    172.24.0.29 - - [08/Apr/2026 13:32:18] "GET / HTTP/1.1" 200 -
+2026-04-08 13:32:18,089 [Thread-217 (process_request_thread)] INFO    172.24.0.29 - - [08/Apr/2026 13:32:18] "GET /socket.io/?EIO=4&transport=websocket&sid=iuD8uFHG0h5pp8RsAAAW HTTP/1.1" 200 -
+2026-04-08 13:32:18,152 [Thread-224 (process_request_thread)] INFO    172.24.0.29 - - [08/Apr/2026 13:32:18] "GET /socket.io/?EIO=4&transport=polling&t=Pri7HES HTTP/1.1" 200 -
+2026-04-08 13:32:18,154 [Thread-226 (process_request_thread)] INFO    172.24.0.29 - - [08/Apr/2026 13:32:18] "GET /video/cargo HTTP/1.1" 200 -
+2026-04-08 13:32:18,156 [Thread-225 (process_request_thread)] INFO    172.24.0.29 - - [08/Apr/2026 13:32:18] "GET /video/vehicle HTTP/1.1" 200 -
+2026-04-08 13:32:18,163 [Thread-227 (process_request_thread)] INFO    172.24.0.29 - - [08/Apr/2026 13:32:18] "GET /video/driver HTTP/1.1" 200 -
+2026-04-08 13:32:18,173 [Thread-229 (process_request_thread)] INFO    172.24.0.29 - - [08/Apr/2026 13:32:18] "POST /socket.io/?EIO=4&transport=polling&t=Pri7HEr&sid=90KKOuolY9OuUVOMAAAY HTTP/1.1" 200 -
+2026-04-08 13:32:18,180 [Thread-230 (process_request_thread)] INFO    172.24.0.29 - - [08/Apr/2026 13:32:18] "GET /socket.io/?EIO=4&transport=polling&t=Pri7HEu&sid=90KKOuolY9OuUVOMAAAY HTTP/1.1" 200 -
+2026-04-08 13:32:18,200 [Thread-233 (process_request_thread)] INFO    172.24.0.29 - - [08/Apr/2026 13:32:18] "GET /socket.io/?EIO=4&transport=polling&t=Pri7HFC&sid=90KKOuolY9OuUVOMAAAY HTTP/1.1" 200 -
+2026-04-08 13:32:18,207 [Thread-235 (process_request_thread)] INFO    172.24.0.29 - - [08/Apr/2026 13:32:18] "GET /video/driver?1775635338189 HTTP/1.1" 200 -
+2026-04-08 13:32:18,211 [Thread-234 (process_request_thread)] INFO    172.24.0.29 - - [08/Apr/2026 13:32:18] "GET /video/cargo?1775635338189 HTTP/1.1" 200 -
+2026-04-08 13:32:19,325 [Thread-237 (process_request_thread)] INFO    172.24.0.29 - - [08/Apr/2026 13:32:19] "GET / HTTP/1.1" 200 -
+2026-04-08 13:32:19,357 [Thread-231 (process_request_thread)] INFO    172.24.0.29 - - [08/Apr/2026 13:32:19] "GET /socket.io/?EIO=4&transport=websocket&sid=90KKOuolY9OuUVOMAAAY HTTP/1.1" 200 -
+2026-04-08 13:32:19,412 [Thread-239 (process_request_thread)] INFO    172.24.0.29 - - [08/Apr/2026 13:32:19] "GET /socket.io/?EIO=4&transport=polling&t=Pri7HY9 HTTP/1.1" 200 -
+2026-04-08 13:32:19,418 [Thread-238 (process_request_thread)] INFO    172.24.0.29 - - [08/Apr/2026 13:32:19] "GET /video/vehicle HTTP/1.1" 200 -
+2026-04-08 13:32:19,423 [Thread-241 (process_request_thread)] INFO    172.24.0.29 - - [08/Apr/2026 13:32:19] "GET /video/cargo HTTP/1.1" 200 -
+2026-04-08 13:32:19,430 [Thread-242 (process_request_thread)] INFO    172.24.0.29 - - [08/Apr/2026 13:32:19] "GET /video/driver HTTP/1.1" 200 -
+2026-04-08 13:32:19,443 [Thread-243 (process_request_thread)] INFO    172.24.0.29 - - [08/Apr/2026 13:32:19] "POST /socket.io/?EIO=4&transport=polling&t=Pri7HYe&sid=XjXw7EnxxBHuylMRAAAa HTTP/1.1" 200 -
+2026-04-08 13:32:19,448 [Thread-245 (process_request_thread)] INFO    172.24.0.29 - - [08/Apr/2026 13:32:19] "GET /socket.io/?EIO=4&transport=polling&t=Pri7HYg&sid=XjXw7EnxxBHuylMRAAAa HTTP/1.1" 200 -
+2026-04-08 13:32:19,534 [Thread-248 (process_request_thread)] INFO    172.24.0.29 - - [08/Apr/2026 13:32:19] "GET /video/cargo?1775635339517 HTTP/1.1" 200 -
+2026-04-08 13:32:19,536 [Thread-249 (process_request_thread)] INFO    172.24.0.29 - - [08/Apr/2026 13:32:19] "GET /video/driver?1775635339517 HTTP/1.1" 200 -
+2026-04-08 13:32:21,305 [Thread-250 (process_request_thread)] INFO    172.24.0.29 - - [08/Apr/2026 13:32:21] "GET / HTTP/1.1" 200 -
+2026-04-08 13:32:21,336 [Thread-244 (process_request_thread)] INFO    172.24.0.29 - - [08/Apr/2026 13:32:21] "GET /socket.io/?EIO=4&transport=websocket&sid=XjXw7EnxxBHuylMRAAAa HTTP/1.1" 200 -
+2026-04-08 13:32:21,396 [Thread-253 (process_request_thread)] INFO    172.24.0.29 - - [08/Apr/2026 13:32:21] "GET /video/driver HTTP/1.1" 200 -
+2026-04-08 13:32:21,398 [Thread-254 (process_request_thread)] INFO    172.24.0.29 - - [08/Apr/2026 13:32:21] "GET /socket.io/?EIO=4&transport=polling&t=Pri7I1B HTTP/1.1" 200 -
+2026-04-08 13:32:21,398 [Thread-251 (process_request_thread)] INFO    172.24.0.29 - - [08/Apr/2026 13:32:21] "GET /video/vehicle HTTP/1.1" 200 -
+2026-04-08 13:32:21,399 [Thread-252 (process_request_thread)] INFO    172.24.0.29 - - [08/Apr/2026 13:32:21] "GET /video/cargo HTTP/1.1" 200 -
+2026-04-08 13:32:21,424 [Thread-256 (process_request_thread)] INFO    172.24.0.29 - - [08/Apr/2026 13:32:21] "POST /socket.io/?EIO=4&transport=polling&t=Pri7I1d&sid=t5Bvi8bMrwF6mwZBAAAc HTTP/1.1" 200 -
+2026-04-08 13:32:21,432 [Thread-259 (process_request_thread)] INFO    172.24.0.29 - - [08/Apr/2026 13:32:21] "GET /socket.io/?EIO=4&transport=polling&t=Pri7I1f&sid=t5Bvi8bMrwF6mwZBAAAc HTTP/1.1" 200 -
+2026-04-08 13:32:21,506 [Thread-261 (process_request_thread)] INFO    172.24.0.29 - - [08/Apr/2026 13:32:21] "GET /video/cargo?1775635341494 HTTP/1.1" 200 -
+2026-04-08 13:32:21,507 [Thread-262 (process_request_thread)] INFO    172.24.0.29 - - [08/Apr/2026 13:32:21] "GET /video/driver?1775635341494 HTTP/1.1" 200 -
+2026-04-08 13:32:22,986 [Cam-driver            ] ERROR   [Cam-driver] Cannot open camera 4
+2026-04-08 13:32:23,092 [Thread-265 (process_request_thread)] INFO    127.0.0.1 - - [08/Apr/2026 13:32:23] "GET /video/driver?1775635326144 HTTP/1.1" 200 -
+2026-04-08 13:32:23,096 [Thread-264 (process_request_thread)] INFO    127.0.0.1 - - [08/Apr/2026 13:32:23] "GET /video/cargo?1775635326144 HTTP/1.1" 200 -
+2026-04-08 13:32:33,453 [Cam-driver            ] ERROR   [Cam-driver] Cannot open camera 4
+2026-04-08 13:32:40,412 [GPSManager            ] WARNING GPS module not found. Retrying in 10s …
+2026-04-08 13:32:43,933 [Cam-driver            ] ERROR   [Cam-driver] Cannot open camera 4
+2026-04-08 13:32:54,406 [Cam-driver            ] ERROR   [Cam-driver] Cannot open camera 4
+2026-04-08 13:33:04,990 [Cam-driver            ] ERROR   [Cam-driver] Cannot open camera 4
+2026-04-08 13:33:15,450 [Cam-driver            ] ERROR   [Cam-driver] Cannot open camera 4
+2026-04-08 13:33:23,415 [GPSManager            ] WARNING GPS module not found. Retrying in 10s …
+2026-04-08 13:33:25,928 [Cam-driver            ] ERROR   [Cam-driver] Cannot open camera 4
+2026-04-08 13:33:36,394 [Cam-driver            ] ERROR   [Cam-driver] Cannot open camera 4
+2026-04-08 13:33:46,881 [Cam-driver            ] ERROR   [Cam-driver] Cannot open camera 4
+2026-04-08 13:33:57,350 [Cam-driver            ] ERROR   [Cam-driver] Cannot open camera 4
+2026-04-08 13:34:06,430 [GPSManager            ] WARNING GPS module not found. Retrying in 10s …
+2026-04-08 13:34:07,812 [Cam-driver            ] ERROR   [Cam-driver] Cannot open camera 4
+2026-04-08 13:34:18,290 [Cam-driver            ] ERROR   [Cam-driver] Cannot open camera 4
+2026-04-08 13:34:28,757 [Cam-driver            ] ERROR   [Cam-driver] Cannot open camera 4
+2026-04-08 13:34:39,242 [Cam-driver            ] ERROR   [Cam-driver] Cannot open camera 4
+2026-04-08 13:34:49,429 [GPSManager            ] WARNING GPS module not found. Retrying in 10s …
+2026-04-08 13:34:49,709 [Cam-driver            ] ERROR   [Cam-driver] Cannot open camera 4
+2026-04-08 13:35:00,174 [Cam-driver            ] ERROR   [Cam-driver] Cannot open camera 4
+2026-04-08 13:35:10,648 [Cam-driver            ] ERROR   [Cam-driver] Cannot open camera 4
+2026-04-08 13:35:21,114 [Cam-driver            ] ERROR   [Cam-driver] Cannot open camera 4
+2026-04-08 13:35:31,582 [Cam-driver            ] ERROR   [Cam-driver] Cannot open camera 4
+2026-04-08 13:35:32,440 [GPSManager            ] WARNING GPS module not found. Retrying in 10s …
+2026-04-08 13:35:42,047 [Cam-driver            ] ERROR   [Cam-driver] Cannot open camera 4
+2026-04-08 13:35:52,521 [Cam-driver            ] ERROR   [Cam-driver] Cannot open camera 4
+2026-04-08 13:36:02,990 [Cam-driver            ] ERROR   [Cam-driver] Cannot open camera 4
+2026-04-08 13:36:13,454 [Cam-driver            ] ERROR   [Cam-driver] Cannot open camera 4
+2026-04-08 13:36:15,455 [GPSManager            ] WARNING GPS module not found. Retrying in 10s …
+2026-04-08 13:36:23,909 [Cam-driver            ] ERROR   [Cam-driver] Cannot open camera 4
+2026-04-08 13:36:34,371 [Cam-driver            ] ERROR   [Cam-driver] Cannot open camera 4
+2026-04-08 13:36:44,846 [Cam-driver            ] ERROR   [Cam-driver] Cannot open camera 4
+2026-04-08 13:36:55,308 [Cam-driver            ] ERROR   [Cam-driver] Cannot open camera 4
+2026-04-08 13:36:58,467 [GPSManager            ] WARNING GPS module not found. Retrying in 10s …
+2026-04-08 13:37:05,780 [Cam-driver            ] ERROR   [Cam-driver] Cannot open camera 4
+2026-04-08 13:37:16,258 [Cam-driver            ] ERROR   [Cam-driver] Cannot open camera 4
+2026-04-08 13:37:26,722 [Cam-driver            ] ERROR   [Cam-driver] Cannot open camera 4
+2026-04-08 13:37:37,193 [Cam-driver            ] ERROR   [Cam-driver] Cannot open camera 4
+2026-04-08 13:37:41,468 [GPSManager            ] WARNING GPS module not found. Retrying in 10s …
+2026-04-08 13:37:47,658 [Cam-driver            ] ERROR   [Cam-driver] Cannot open camera 4
+2026-04-08 13:37:58,130 [Cam-driver            ] ERROR   [Cam-driver] Cannot open camera 4
+2026-04-08 13:38:08,594 [Cam-driver            ] ERROR   [Cam-driver] Cannot open camera 4
+2026-04-08 13:38:19,058 [Cam-driver            ] ERROR   [Cam-driver] Cannot open camera 4
+2026-04-08 13:38:24,470 [GPSManager            ] WARNING GPS module not found. Retrying in 10s …
+2026-04-08 13:38:29,522 [Cam-driver            ] ERROR   [Cam-driver] Cannot open camera 4
+2026-04-08 13:38:39,994 [Cam-driver            ] ERROR   [Cam-driver] Cannot open camera 4
+2026-04-08 13:38:50,460 [Cam-driver            ] ERROR   [Cam-driver] Cannot open camera 4
+2026-04-08 13:39:00,930 [Cam-driver            ] ERROR   [Cam-driver] Cannot open camera 4
+2026-04-08 13:39:07,488 [GPSManager            ] WARNING GPS module not found. Retrying in 10s …
+2026-04-08 13:39:11,403 [Cam-driver            ] ERROR   [Cam-driver] Cannot open camera 4
+2026-04-08 13:39:21,862 [Cam-driver            ] ERROR   [Cam-driver] Cannot open camera 4
+2026-04-08 13:39:32,326 [Cam-driver            ] ERROR   [Cam-driver] Cannot open camera 4
+2026-04-08 13:39:42,786 [Cam-driver            ] ERROR   [Cam-driver] Cannot open camera 4
+2026-04-08 13:39:50,490 [GPSManager            ] WARNING GPS module not found. Retrying in 10s …
+2026-04-08 13:39:53,254 [Cam-driver            ] ERROR   [Cam-driver] Cannot open camera 4
+2026-04-08 13:40:03,721 [Cam-driver            ] ERROR   [Cam-driver] Cannot open camera 4
+2026-04-08 13:40:14,192 [Cam-driver            ] ERROR   [Cam-driver] Cannot open camera 4
+2026-04-08 13:40:24,661 [Cam-driver            ] ERROR   [Cam-driver] Cannot open camera 4
+2026-04-08 13:40:33,501 [GPSManager            ] WARNING GPS module not found. Retrying in 10s …
+2026-04-08 13:40:35,146 [Cam-driver            ] ERROR   [Cam-driver] Cannot open camera 4
+2026-04-08 13:40:45,614 [Cam-driver            ] ERROR   [Cam-driver] Cannot open camera 4
+2026-04-08 13:40:56,082 [Cam-driver            ] ERROR   [Cam-driver] Cannot open camera 4
+2026-04-08 13:41:06,542 [Cam-driver            ] ERROR   [Cam-driver] Cannot open camera 4
+2026-04-08 13:41:16,512 [GPSManager            ] WARNING GPS module not found. Retrying in 10s …
+2026-04-08 13:41:17,002 [Cam-driver            ] ERROR   [Cam-driver] Cannot open camera 4
+2026-04-08 13:41:27,469 [Cam-driver            ] ERROR   [Cam-driver] Cannot open camera 4
+2026-04-08 13:41:27,739 [Thread-257 (process_request_thread)] INFO    172.24.0.29 - - [08/Apr/2026 13:41:27] "GET /socket.io/?EIO=4&transport=websocket&sid=t5Bvi8bMrwF6mwZBAAAc HTTP/1.1" 200 -
+2026-04-08 13:41:30,219 [Thread-45 (process_request_thread)] INFO    127.0.0.1 - - [08/Apr/2026 13:41:30] "GET /socket.io/?EIO=4&transport=websocket&sid=HrclzuU53MXx-wnlAAAG HTTP/1.1" 200 -
+2026-04-08 13:41:37,931 [Cam-driver            ] ERROR   [Cam-driver] Cannot open camera 4
+2026-04-08 13:41:48,394 [Cam-driver            ] ERROR   [Cam-driver] Cannot open camera 4
+2026-04-08 13:41:58,862 [Cam-driver            ] ERROR   [Cam-driver] Cannot open camera 4
+2026-04-08 13:41:59,516 [GPSManager            ] WARNING GPS module not found. Retrying in 10s …
+2026-04-08 13:42:09,326 [Cam-driver            ] ERROR   [Cam-driver] Cannot open camera 4
+2026-04-08 13:42:19,791 [Cam-driver            ] ERROR   [Cam-driver] Cannot open camera 4
+2026-04-08 13:42:30,258 [Cam-driver            ] ERROR   [Cam-driver] Cannot open camera 4
+2026-04-08 13:42:40,724 [Cam-driver            ] ERROR   [Cam-driver] Cannot open camera 4
+2026-04-08 13:42:42,526 [GPSManager            ] WARNING GPS module not found. Retrying in 10s …
+2026-04-08 13:42:51,192 [Cam-driver            ] ERROR   [Cam-driver] Cannot open camera 4
+2026-04-08 13:43:01,658 [Cam-driver            ] ERROR   [Cam-driver] Cannot open camera 4
+2026-04-08 13:43:12,120 [Cam-driver            ] ERROR   [Cam-driver] Cannot open camera 4
+2026-04-08 13:43:22,589 [Cam-driver            ] ERROR   [Cam-driver] Cannot open camera 4
+2026-04-08 13:43:25,539 [GPSManager            ] WARNING GPS module not found. Retrying in 10s …
+2026-04-08 13:43:33,056 [Cam-driver            ] ERROR   [Cam-driver] Cannot open camera 4
+2026-04-08 13:43:43,518 [Cam-driver            ] ERROR   [Cam-driver] Cannot open camera 4
+2026-04-08 13:43:47,133 [MainThread            ] INFO    Shutdown signal …
