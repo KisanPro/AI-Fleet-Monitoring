@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Fleet Monitor — Jetson Orin Nano</title>
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+
+<style>
+/* ── Reset ─────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:        #0a0c12;
+  --bg2:       #10131d;
+  --bg3:       #181b28;
+  --border:    #252a40;
+  --accent:    #00e5a0;
+  --blue:      #3d8fff;
+  --orange:    #ff8c00;
+  --red:       #ff3b3b;
+  --warn:      #ffb300;
+  --text:      #cdd5f0;
+  --dim:       #5a6080;
+  --r:         7px;
+  --hh:        50px;
+}
+
+html, body {
+  height: 100%;
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  font-size: 13px;
+  overflow: hidden;
+}
+
+body { display: flex; flex-direction: column; }
+
+/* ── Header ─────────────────────────────────────────────── */
+header {
+  height: var(--hh);
+  min-height: var(--hh);
+  background: var(--bg2);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  padding: 0 14px;
+  gap: 14px;
+  flex-shrink: 0;
+  z-index: 20;
+}
+
+.logo { font-size: 15px; font-weight: 700; color: var(--accent); letter-spacing: 1px; }
+.sub  { font-size: 10px; color: var(--dim); }
+
+.hmetrics {
+  margin-left: auto;
+  display: flex;
+  gap: 18px;
+  align-items: center;
+}
+
+.hm { display: flex; flex-direction: column; align-items: center; gap: 1px; }
+.hm .v { font-size: 13px; font-weight: 700; color: var(--accent); font-family: monospace; }
+.hm .l { font-size: 9px;  color: var(--dim); text-transform: uppercase; letter-spacing: .4px; }
+
+#dot {
+  width: 9px; height: 9px; border-radius: 50%;
+  background: var(--accent);
+  animation: blink 2s infinite;
+}
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:.2} }
+
+/* ── Alert banner ───────────────────────────────────────── */
+#banner {
+  position: fixed;
+  top: var(--hh);
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--red);
+  color: #fff;
+  font-weight: 700;
+  font-size: 13px;
+  padding: 9px 24px;
+  border-radius: 0 0 8px 8px;
+  z-index: 999;
+  display: none;
+  box-shadow: 0 4px 20px rgba(255,59,59,.45);
+  animation: slideIn .3s ease;
+  white-space: nowrap;
+}
+@keyframes slideIn {
+  from { transform: translateX(-50%) translateY(-100%); }
+  to   { transform: translateX(-50%) translateY(0); }
+}
+
+/* ── 2×2 grid ───────────────────────────────────────────── */
+.grid {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 5px;
+  padding: 5px;
+  min-height: 0;
+}
+
+.quad {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+}
+
+/* ── Quad header ─────────────────────────────────────────── */
+.qh {
+  height: 30px;
+  background: var(--bg3);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  padding: 0 8px;
+  gap: 7px;
+  flex-shrink: 0;
+}
+
+.qtitle {
+  font-size: 10px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .6px;
+}
+
+.qtag {
+  font-size: 9px; padding: 2px 6px; border-radius: 3px;
+  background: var(--bg); color: var(--dim); border: 1px solid var(--border);
+}
+
+/* ── Camera feed ─────────────────────────────────────────── */
+.qbody { flex:1; overflow:hidden; position:relative; }
+
+.feed {
+  width: 100%; height: 100%;
+  object-fit: contain;
+  display: block;
+  background: #000;
+}
+
+/* ── Status pill ─────────────────────────────────────────── */
+.status-pill {
+  position: absolute;
+  top: 7px; right: 8px;
+  font-size: 9px; font-weight: 700;
+  padding: 3px 8px; border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: .4px;
+  z-index: 5;
+  pointer-events: none;
+}
+.pill-active  { background:#0d2b1e; color:var(--accent); border:1px solid #00e5a044; }
+.pill-paused  { background:#1a1a20; color:var(--dim);    border:1px solid #30304088; }
+
+/* ── Toggle button ───────────────────────────────────────── */
+.toggle-wrap {
+  position: absolute;
+  bottom: 10px; left: 50%;
+  transform: translateX(-50%);
+  z-index: 6;
+}
+
+#toggleBtn {
+  padding: 7px 20px;
+  border: 2px solid var(--blue);
+  border-radius: 18px;
+  background: rgba(10,12,20,.85);
+  color: var(--blue);
+  font-size: 11px; font-weight: 700;
+  cursor: pointer;
+  letter-spacing: .4px;
+  transition: all .2s;
+  backdrop-filter: blur(4px);
+}
+#toggleBtn:hover { background: var(--blue); color: #fff; }
+#toggleBtn:active { transform: scale(.96); }
+
+/* ── Log panel (Q1 of row 2 ← mapped as a floating overlay on Q3) ── */
+/* Actually Q3 driver cam is just a camera + log row swapped below   */
+
+/* ── GPS panel ───────────────────────────────────────────── */
+#gpsMap   { width: 100%; height: 100%; background: #000; z-index: 1; overflow: hidden; }
+#gpsMap .leaflet-tile {
+  filter: invert(100%) hue-rotate(180deg) brightness(95%) contrast(90%);
+}
+#gpsMap .leaflet-container {
+  background: var(--bg) !important;
+}
+#gpsMap .leaflet-tile-pane {
+  background: var(--bg);
+}
+
+.gps-overlay {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  background: rgba(10, 12, 18, 0.8);
+  backdrop-filter: blur(10px);
+  border-top: 1px solid var(--border);
+  padding: 8px 12px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.gps-overlay div { pointer-events: auto; }
+
+.gf { display:flex; flex-direction:column; gap:1px; }
+.gf .gv { font-size: 13px; font-weight: 700; color: var(--accent); font-family: monospace; }
+.gf .gl { font-size: 9px; color: var(--dim); text-transform: uppercase; }
+
+#fixPill {
+  margin-left: auto;
+  display: flex; align-items: center; gap: 6px;
+  font-size: 10px; font-weight: 700;
+}
+#fixDot {
+  width: 9px; height: 9px; border-radius: 50%;
+  background: var(--dim);
+}
+
+.recenter-btn {
+  position: absolute;
+  top: 10px; left: 50px;
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 11px;
+  cursor: pointer;
+  z-index: 1000;
+  font-weight: 600;
+}
+.recenter-btn:hover { background: var(--bg3); color: var(--accent); }
+
+/* ── Log quadrant (inline, no camera) ───────────────────── */
+/* We place a log panel INSIDE Q3 when paused — but actually
+   we keep all 4 quads as: Q1=vehicle Q2=cargo Q3=driver Q4=GPS
+   with a floating log overlay accessible via a toggle            */
+
+/* Realtime log lives in the bottom strip of Q3 header area */
+.log-panel {
+  flex: 1;
+  overflow-y: auto;
+  padding: 4px 8px;
+  font-family: 'Courier New', monospace;
+  font-size: 10.5px;
+  line-height: 1.65;
+  background: var(--bg2);
+}
+.log-panel::-webkit-scrollbar { width: 3px; }
+.log-panel::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+
+.ll { display:flex; gap:7px; padding: 0.5px 0; }
+.lt { color: var(--dim);  flex-shrink:0; }
+.ls { color: var(--blue); flex-shrink:0; min-width:85px; }
+.lm { color: var(--text); word-break:break-all; }
+.ll.ALERT .lm { color: var(--red);  font-weight:600; }
+.ll.WARN  .lm { color: var(--warn); }
+
+/* Responsive */
+@media (max-width: 860px) {
+  .grid { grid-template-columns: 1fr; grid-template-rows: repeat(4, 250px); }
+  .hmetrics { display: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- ══ HEADER ══════════════════════════════════════════════ -->
+<header>
+  <div id="dot"></div>
+  <div>
+    <div class="logo">FLEET MONITOR</div>
+    <div class="sub">Jetson Orin Nano — 3-Camera AI Safety System</div>
+  </div>
+  <div class="hmetrics">
+    <div class="hm"><span class="v" id="hCpu">--</span>  <span class="l">CPU%</span></div>
+    <div class="hm"><span class="v" id="hRam">--</span>  <span class="l">RAM%</span></div>
+    <div class="hm"><span class="v" id="hSysT">--</span> <span class="l">SoC°C</span></div>
+    <div class="hm"><span class="v" id="hSensT">--</span><span class="l">Sensor°C</span></div>
+    <div class="hm"><span class="v" id="hFpsV">--</span> <span class="l">FPS-Road</span></div>
+    <div class="hm"><span class="v" id="hFpsD">--</span> <span class="l">FPS-Drv</span></div>
+    <div class="hm"><span class="v" id="hFpsC">--</span> <span class="l">FPS-Cgo</span></div>
+    <div class="hm"><span class="v" id="hClock">--:--:--</span><span class="l">TIME</span></div>
+  </div>
+</header>
+
+<!-- ══ ALERT BANNER ════════════════════════════════════════ -->
+<div id="banner"></div>
+
+<!-- ══ 2×2 GRID ════════════════════════════════════════════ -->
+<div class="grid">
+
+  <!-- Q1 — Road / Vehicle Ahead (always active) ─────────── -->
+  <div class="quad">
+    <div class="qh" style="border-left:3px solid var(--accent)">
+      <span class="qtitle" style="color:var(--accent)">🛣 Vehicle Ahead</span>
+      <span class="qtag" id="q1fps">-- fps</span>
+      <span class="qtag" id="q1lat">-- ms</span>
+      <span class="qtag" style="color:var(--accent)">ALWAYS ON</span>
+    </div>
+    <div class="qbody">
+      <img class="feed" id="camVehicle" src="/video/vehicle" alt="Vehicle"/>
+    </div>
+  </div>
+
+  <!-- Q2 — Cargo Camera ─────────────────────────────────── -->
+  <div class="quad">
+    <div class="qh" style="border-left:3px solid var(--orange)">
+      <span class="qtitle" style="color:var(--orange)">📦 Cargo Camera</span>
+      <span class="qtag" id="q2fps">-- fps</span>
+      <span class="qtag" id="q2lat">-- ms</span>
+      <span class="qtag" id="q2mode">--</span>
+    </div>
+    <div class="qbody" id="q2body">
+      <img class="feed" id="camCargo" src="/video/cargo" alt="Cargo"/>
+      <span id="cargoPill" class="status-pill pill-paused">CLOSED</span>
+      <div class="toggle-wrap">
+        <button id="toggleBtn" onclick="doToggle()">⇄ SWITCH: DRIVER / CARGO</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Q3 — Driver Camera ────────────────────────────────── -->
+  <div class="quad">
+    <div class="qh" style="border-left:3px solid var(--blue)">
+      <span class="qtitle" style="color:var(--blue)">🚗 Driver Camera</span>
+      <span class="qtag" id="q3fps">-- fps</span>
+      <span class="qtag" id="q3lat">-- ms</span>
+      <span class="qtag" id="q3mode">--</span>
+    </div>
+    <div class="qbody" id="q3body">
+      <img class="feed" id="camDriver" src="/video/driver" alt="Driver"/>
+      <span id="driverPill" class="status-pill pill-active">ACTIVE</span>
+    </div>
+  </div>
+
+  <!-- Q4 — GPS Live Track ────────────────────────────────── -->
+  <div class="quad">
+    <div class="qh" style="border-left:3px solid #a855f7">
+      <span class="qtitle" style="color:#a855f7">🛰 GPS Live Track (OpenStreetMap API)</span>
+      <span class="qtag" id="gpsSat">-- sats</span>
+      <span class="qtag" id="gpsSpd">-- km/h</span>
+    </div>
+    <div class="qbody" id="gpsContainer">
+      <div id="gpsMap"></div>
+      <button class="recenter-btn" onclick="recenterMap()">🎯 RECENTER</button>
+      <div class="gps-overlay">
+        <div class="gf">
+          <span class="gv" id="gpsLat">--.------</span>
+          <span class="gl">Latitude</span>
+        </div>
+        <div class="gf">
+          <span class="gv" id="gpsLon">--.------</span>
+          <span class="gl">Longitude</span>
+        </div>
+        <div class="gf">
+          <span class="gv" id="gpsAlt">--- m</span>
+          <span class="gl">Altitude</span>
+        </div>
+        <div class="gf">
+          <span class="gv" id="gpsTs">--:--:--</span>
+          <span class="gl">Last fix</span>
+        </div>
+        <div id="fixPill">
+          <div id="fixDot"></div>
+          <span id="fixLabel" style="color:var(--dim)">NO FIX</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /grid -->
+
+<!-- ── Floating real-time log panel ────────────────────── -->
+<!-- Overlaid as a slide-in drawer accessible from top -->
+<div id="logDrawer" style="
+  position:fixed; right:0; top:var(--hh); bottom:0; width:360px;
+  background:var(--bg2); border-left:1px solid var(--border);
+  transform:translateX(100%); transition:transform .3s; z-index:50;
+  display:flex; flex-direction:column;">
+  <div style="height:32px;background:var(--bg3);border-bottom:1px solid var(--border);
+    display:flex;align-items:center;padding:0 10px;gap:8px;">
+    <span style="font-size:10px;font-weight:700;color:var(--accent);text-transform:uppercase;">
+      📋 Real-Time Logs
+    </span>
+    <span id="logCnt" style="font-size:9px;color:var(--dim)">0 entries</span>
+    <button onclick="toggleLog()" style="margin-left:auto;background:none;border:none;
+      color:var(--dim);cursor:pointer;font-size:14px;">✕</button>
+  </div>
+  <div id="logPanel" class="log-panel"></div>
+</div>
+
+<button id="logBtn" onclick="toggleLog()" style="
+  position:fixed; right:12px; bottom:12px; z-index:100;
+  padding:8px 14px; background:var(--bg3); color:var(--text);
+  border:1px solid var(--border); border-radius:20px;
+  font-size:11px; cursor:pointer; font-weight:600;">
+  📋 Logs
+</button>
+
+<script>
+// ── Socket.IO ─────────────────────────────────────────────
+const socket = io();
+
+// ── Leaflet map ───────────────────────────────────────────
+const map = L.map('gpsMap', { zoomControl: true, attributionControl: false });
+map.setView([20.0, 0.0], 2);  // Initialize global view so the Free Maps API renders immediately
+
+L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+  attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+  subdomains: 'abcd',
+  maxZoom: 20
+}).addTo(map);
+
+const truckIcon = L.divIcon({
+  html: '<div style="font-size:20px;line-height:1;">🚛</div>',
+  iconSize:[24,24], iconAnchor:[12,12], className:''
+});
+
+let marker    = null;
+let polyline  = L.polyline([], { color:'#00e5a0', weight:2.5, opacity:.8 }).addTo(map);
+let track     = [];
+let mapInited = false;
+
+// ── GPS ───────────────────────────────────────────────────
+let followDevice = true;
+
+socket.on('gps_update', d => {
+  const lat = parseFloat(d.lat) || 0, lon = parseFloat(d.lon) || 0;
+  const fix = !!d.fix;
+
+  document.getElementById('gpsLat').textContent = fix ? lat.toFixed(6) : '--.------';
+  document.getElementById('gpsLon').textContent = fix ? lon.toFixed(6) : '--.------';
+  document.getElementById('gpsAlt').textContent = fix ? `${parseFloat(d.altitude || 0).toFixed(0)} m` : '--- m';
+  document.getElementById('gpsTs').textContent  = d.timestamp ? d.timestamp.split(' ')[1] : '--:--:--';
+  document.getElementById('gpsSpd').textContent = fix ? `${parseFloat(d.speed_kmh || 0).toFixed(1)} km/h` : '-- km/h';
+  document.getElementById('gpsSat').textContent = `${d.satellites || 0} sats`;
+
+  const dot = document.getElementById('fixDot');
+  const lbl = document.getElementById('fixLabel');
+  
+  if (fix && lat !== 0 && lon !== 0) {
+    dot.style.background = '#00e5a0'; 
+    lbl.style.color = '#00e5a0';
+    lbl.textContent = 'GPS FIX';
+    
+    // Auto-init view
+    if (!mapInited) { 
+        map.setView([lat, lon], 17); 
+        mapInited = true; 
+    } else if (followDevice) {
+        map.panTo([lat, lon]);
+    }
+    
+    // Update marker
+    if (!marker) {
+        marker = L.marker([lat, lon], {icon: truckIcon}).addTo(map);
+    } else {
+        marker.setLatLng([lat, lon]);
+    }
+    
+    // Update path
+    track.push([lat, lon]);
+    if (track.length > 500) track.shift();
+    polyline.setLatLngs(track);
+    
+    // Ensure map is correctly sized
+    map.invalidateSize();
+  } else {
+    dot.style.background = '#555'; 
+    lbl.style.color = 'var(--dim)';
+    lbl.textContent = 'NO FIX';
+  }
+});
+
+// Click map to disable following
+map.on('dragstart', () => { 
+    followDevice = false; 
+    document.querySelector('.recenter-btn').style.borderColor = 'var(--orange)';
+});
+
+function recenterMap() {
+    followDevice = true;
+    document.querySelector('.recenter-btn').style.borderColor = 'var(--border)';
+    const lat = parseFloat(document.getElementById('gpsLat').textContent);
+    const lon = parseFloat(document.getElementById('gpsLon').textContent);
+    if (lat && lon) map.setView([lat, lon], 17);
+}
+
+// ── Benchmark / performance ───────────────────────────────
+socket.on('bench_update', d => {
+  document.getElementById('hCpu').textContent   = `${(d.cpu_percent||0).toFixed(0)}%`;
+  document.getElementById('hRam').textContent   = `${(d.ram_percent||0).toFixed(0)}%`;
+  document.getElementById('hSysT').textContent  = (d.system_temp_c||0).toFixed(1);
+  document.getElementById('hSensT').textContent = (d.sensor_temp_c||0).toFixed(1);
+  document.getElementById('hFpsV').textContent  = (d.fps_vehicle||0).toFixed(1);
+  document.getElementById('hFpsD').textContent  = (d.fps_driver||0).toFixed(1);
+  document.getElementById('hFpsC').textContent  = (d.fps_cargo||0).toFixed(1);
+
+  document.getElementById('q1fps').textContent = `${(d.fps_vehicle||0).toFixed(1)} fps`;
+  document.getElementById('q1lat').textContent = `${(d.lat_vehicle_ms||0).toFixed(0)} ms`;
+  document.getElementById('q2fps').textContent = `${(d.fps_cargo||0).toFixed(1)} fps`;
+  document.getElementById('q2lat').textContent = `${(d.lat_cargo_ms||0).toFixed(0)} ms`;
+  document.getElementById('q3fps').textContent = `${(d.fps_driver||0).toFixed(1)} fps`;
+  document.getElementById('q3lat').textContent = `${(d.lat_driver_ms||0).toFixed(0)} ms`;
+});
+
+// ── Mode change ───────────────────────────────────────────
+socket.on('mode_changed', d => {
+  applyMode(d.mode);
+});
+
+function applyMode(mode) {
+  const cp = document.getElementById('cargoPill');
+  const dp = document.getElementById('driverPill');
+  const q2m = document.getElementById('q2mode');
+  const q3m = document.getElementById('q3mode');
+
+  if (mode === 'cargo') {
+    // Cargo ACTIVE, Driver CLOSED
+    cp.textContent = 'ACTIVE';  cp.className = 'status-pill pill-active';
+    dp.textContent = 'CLOSED';  dp.className = 'status-pill pill-paused';
+    q2m.textContent = 'ACTIVE'; q2m.style.color = 'var(--orange)';
+    q3m.textContent = 'CLOSED'; q3m.style.color = 'var(--dim)';
+  } else {
+    // Driver ACTIVE, Cargo CLOSED
+    dp.textContent = 'ACTIVE';  dp.className = 'status-pill pill-active';
+    cp.textContent = 'CLOSED';  cp.className = 'status-pill pill-paused';
+    q3m.textContent = 'ACTIVE'; q3m.style.color = 'var(--blue)';
+    q2m.textContent = 'CLOSED'; q2m.style.color = 'var(--dim)';
+  }
+}
+
+function doToggle() {
+  socket.emit('toggle_camera');
+}
+
+// ── Logs ─────────────────────────────────────────────────
+const logPanel = document.getElementById('logPanel');
+let totalLogs  = 0;
+let logOpen    = false;
+
+socket.on('log_batch', entries => {
+  entries.forEach(e => {
+    const d = document.createElement('div');
+    d.className = `ll ${e.level}`;
+    d.innerHTML = `<span class="lt">${e.time}</span>`
+                + `<span class="ls">[${(e.source||'SYS').slice(0,10)}]</span>`
+                + `<span class="lm">${esc(e.message)}</span>`;
+    logPanel.appendChild(d);
+    if (e.level === 'ALERT') flashBanner(e.message);
+  });
+  totalLogs += entries.length;
+  document.getElementById('logCnt').textContent = `${totalLogs} entries`;
+  logPanel.scrollTop = logPanel.scrollHeight;
+});
+
+function toggleLog() {
+  logOpen = !logOpen;
+  document.getElementById('logDrawer').style.transform =
+    logOpen ? 'translateX(0)' : 'translateX(100%)';
+}
+
+// ── Alert banner ──────────────────────────────────────────
+let bannerTimer = null;
+function flashBanner(msg) {
+  const b = document.getElementById('banner');
+  b.textContent = '⚠  ' + msg.replace('[ALERT] ','');
+  b.style.display = 'block';
+  clearTimeout(bannerTimer);
+  bannerTimer = setTimeout(() => b.style.display = 'none', 5500);
+}
+
+// ── Clock ─────────────────────────────────────────────────
+setInterval(() => {
+  document.getElementById('hClock').textContent =
+    new Date().toTimeString().slice(0,8);
+}, 1000);
+
+// ── Helpers ───────────────────────────────────────────────
+function esc(s) {
+  return String(s)
+    .replace(/&/g,'&amp;').replace(/</g,'&lt;')
+    .replace(/>/g,'&gt;');
+}
+
+// Map resize after DOM paint
+setTimeout(() => map.invalidateSize(), 400);
+window.addEventListener('resize', () => map.invalidateSize());
+</script>
+</body>
+</html>
