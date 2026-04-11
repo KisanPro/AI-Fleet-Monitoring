@@ -1,416 +1,124 @@
-# 🚛 AI Fleet Monitoring System  (Road - Continuous & Driver/Cargo - Switchable) 
-## Jetson Orin Nano + 3 USB Cameras + SIM7600 USB
+# Fleet Monitor — Jetson Orin Nano
+### Senior Embedded AI System | Production Deployment Guide
 
 ---
 
-# 📌 Project Overview
+## 🏗 System Architecture
 
-This project builds a real-time AI fleet monitoring system using:
-
-- NVIDIA Jetson Orin Nano
-- 3 USB Cameras
-- SIM7600 4G LTE + GPS module
-- YOLOv8 AI model
-- MediaPipe AI models
-- Flask Web Dashboard
-
-The system can:
-
-- 🛣 Detect objects on the road (always active)
-- 👤 Detect driver drowsiness
-- 📦 Detect unauthorized cargo access
-- 📍 Log GPS location
-- 📲 Send SMS alerts
-- 💬 Send Telegram alerts
-- 🌐 Show live camera streams in browser
-- 🔁 Switch between Driver and Cargo modes
-
----
-
-# 🧰 Hardware Requirements
-
-## 1️⃣ Processing Unit
-- NVIDIA Jetson Orin Nano (8GB recommended)
-- Official power adapter
-- Cooling fan (recommended)
-
-## 2️⃣ Cameras (3x USB Webcams)
-- Any UVC compatible USB cameras
-
-Connect as:
-
-| USB Port | Camera Role |
-|----------|------------|
-| /dev/video0 | Driver Camera |
-| /dev/video1 | Road Camera |
-| /dev/video2 | Cargo Camera |
-Adjust the port Number after connections
-
-## 3️⃣ SIM7600 USB LTE + GPS Module
-- SIM7600 USB version
-- Active SIM card (SMS enabled)
-- GPS antenna connected
-
-Plug SIM7600 into USB.
-
-## 4️⃣ Internet
-- WiFi or Ethernet for setup
-- Optional: SIM7600 data
+```text
+┌─────────────────────────────────────────────────────────────┐
+│                       FLEET MONITOR                           │
+│                     Jetson Orin Nano                          │
+├────────────────────┬────────────────────┬───────────────────┤
+│  Camera 0 (Road)   │  Camera 1 (Driver) │ Camera 2 (Cargo)    │
+│  ALWAYS ACTIVE     │  SWITCHABLE        │ SWITCHABLE          │
+└────────────────────┴────────────────────┴───────────────────┘
+         │                     │                    │
+   ┌─────▼──────┐        ┌─────▼───────┐      ┌─────▼───────┐
+   │VehicleDet  │        │Drowsiness   │      │CargoDetector│
+   │Thread      │        │Detector T   │      │Thread       │
+   └────────────┘        └──────┬──────┘      └──────┬──────┘
+         │                      │                    │
+   ┌─────▼──────────────────────▼────────────────────▼────────┐
+   │                    ExcelLogger (T)                         │
+   │      fleet_log.xlsx — (Sheet: Alerts, Sheet: Performance)   │
+   └──────────────────────────────────────────────────────────┘
+   ┌──────────────────────────────────────────────────────────┐
+   │  GPSManager T (SIM7600G-H) | Automatic Port/AT Detection │
+   │  SensorManager T (DS18B20 Temp, HC-SR04 Ultrasonic)      │
+   │  Flask+SocketIO Dashboard (Main)                         │
+   └──────────────────────────────────────────────────────────┘
+```
 
 ---
 
-# 🖥 Operating System Setup
+## 🔌 Hardware Connections
 
-1. Flash Jetson using NVIDIA SDK Manager.
-2. Install JetPack 5.x or 6.x.
-3. Boot into Ubuntu desktop.
-4. Connect to internet.
+### Cameras
+| Role | Interface | Status |
+|------|-----------|--------|
+| Vehicle/Road | USB or CSI | **Always On**, Auto-detected index 0 |
+| Driver Drowsiness | USB or CSI | **Toggleable**, Auto-detected index 1 |
+| Cargo Monitoring | USB or CSI | **Toggleable**, Auto-detected index 2 |
 
-Update system:
+*Note: Toggling physically suspends unused cameras to conserve memory and processing power.*
+
+### GPIO Sensors (BOARD numbering, Jetson Orin Nano)
+| Pin | Component / Purpose |
+|-----|---------------------|
+| 11 | Ultrasonic TRIG (Cargo door mechanism) |
+| 13 | Ultrasonic ECHO (Cargo door mechanism) |
+| 15 | Buzzer (PWM) |
+
+### Additional Modules
+- **GPS (SIM7600G-H)**: Connect via USB (appears as `/dev/ttyUSB*`). The script automatically loops, detects the correct COM port, auto-sends AT engine initialization commands, and retries until coordinates drop.
+- **Temperature (DS18B20)**: Connect to 1-Wire GPIO (sysfs: `/sys/bus/w1/devices/28-*/w1_slave`). This standalone temperature sensor governs the High Temperature Alert (independent of Jetson SoC thermals).
+
+---
+
+## 🚀 Execution & Setup Guide
 
 ```bash
-sudo apt update
-sudo apt upgrade -y
+# 1. Clone / copy the complete project to your Jetson
+cd /home/pathvision/Downloads
+# (If downloading ZIP, unzip it as JRF_V1)
+cd JRF_V1
+
+# 2. Add YOLOv8 engine fallbacks (Optional, script checks anyway)
+mkdir -p models
+# If `yolov8s.engine` isn't found, it defaults to `yolov8n.engine`. 
+# To convert models for Jetson, use on your system:
+# yolo export model=yolov8n.pt format=engine
+# yolo export model=yolov8s.pt format=engine
+
+# 3. Ensure OS-level permissions (For GPIO, I2C, and USB serial)
+sudo usermod -aG dialout $USER
+sudo usermod -aG gpio $USER
+
+# 4. Install required packages
+pip install -r requirements.txt --break-system-packages
+
+# 5. Run the System!
+# Simply execute the main file. Do NOT start individual modules.
+python3 main.py
 ```
+
+*Go to **http://localhost:5000** on your machine or `http://<jetson-ip>:5000` to see the live system.*
 
 ---
 
-# 📷 Verify Cameras
+## 🎛 Dashboard Design Layout (2x2 Grid)
 
-Check camera devices:
+The interface boasts a fully dynamic, real-time 2x2 grid containing three camera streams and one live tracking map:
 
-```bash
-ls /dev/video*
+```text
+┌─────────────────────────┬─────────────────────────┐
+│           Q1            │           Q2            │
+│  🛣️ Road Camera         │  📦 Cargo Camera        │
+│  (Always Active, FPS)   │  (Suspending/Active)    │
+├─────────────────────────┼─────────────────────────┤
+│           Q3            │           Q4            │
+│  🚗 Driver Camera       │  🛰️ GPS Map API Tracker │
+│  (Suspending/Active)    │  (Leaflet/OSM Realtime) │
+└─────────────────────────┴─────────────────────────┘
 ```
-
-Expected:
-
-```
-/dev/video0
-/dev/video1
-/dev/video2
-```
-
-Test visually:
-
-```bash
-sudo apt install cheese
-cheese
-```
-
-Confirm:
-- video0 = Driver
-- video1 = Road
-- video2 = Cargo
-
-If order is wrong, swap USB ports.
+**Switch Button Behavior**: Central switch actively dictates the active camera mode. Activating Q3 Driver automatically physically closes the hardware resources linked to Q2 Cargo—triggering a clear "CLOSED" state label overlay on inactive grid quadrants.
 
 ---
 
-# 📡 Verify SIM7600
+## 📊 Single Log File (Excel Multi-Sheet Output)
 
-Check ports:
+As requested, all tabular logs flow into **a single file separated uniquely by Sheets/Tabs**. Since standard CSV formats physically cannot handle multiple sheets within a single file natively, the built-in `ExcelLogger` library handles this via `logs/fleet_log.xlsx` structured exactly as a CSV spreadsheet would be. 
 
-```bash
-ls /dev/ttyUSB*
-```
+File Path: `logs/fleet_log.xlsx`
+1. **Sheet: `Alerts`** -> Columns: `[Alert_Name | Timestamp | GPS_Lat | GPS_Lon | Camera_Source | Details]`
+2. **Sheet: `Performance`** -> Columns: `[Timestamp | FPS (all cameras) | Inference latency | CPU % | RAM % | Sensor_Temp_C | System_Temp_C (Jetson)]`
 
-Expected:
+## 🧠 Core Systems & Alert Rules
 
-```
-/dev/ttyUSB0
-/dev/ttyUSB1
-/dev/ttyUSB2
-/dev/ttyUSB3
-```
-
-Install minicom:
-
-```bash
-sudo apt install minicom
-```
-
-Test connection:
-
-```bash
-minicom -D /dev/ttyUSB2 -b 115200
-```
-
-Inside minicom:
-
-```
-AT
-```
-
-Response should be:
-
-```
-OK
-```
-
-Enable GPS:
-
-```
-AT+CGPS=1
-```
-
-Exit: `CTRL + A`, then `X`
-
----
-
-# 📦 Install Python Dependencies
-
-```bash
-pip install ultralytics mediapipe flask opencv-python pyserial requests numpy
-```
-
-Optional (performance improvement):
-
-```bash
-pip install PyTurboJPEG
-```
-
----
-
-# 🤖 YOLO Model Setup
-
-Option 1 (simple):
-Script auto-downloads YOLOv8n.
-
-Option 2 (recommended - faster):
-
-```bash
-yolo export model=yolov8n.pt format=engine
-```
-
-Place `yolov8n.engine` in project folder.
-
----
-
-# 💬 Telegram Bot Setup
-
-## Create Bot
-
-1. Open Telegram
-2. Search `@BotFather`
-3. Type:
-   ```
-   /newbot
-   ```
-4. Copy the Bot Token.
-
-## Get Chat ID
-
-Send a message to your bot.
-
-Open:
-
-```
-https://api.telegram.org/bot<YOUR_TOKEN>/getUpdates
-```
-
-Find:
-
-```
-"chat":{"id":123456789}
-```
-
-Copy the ID.
-
----
-
-# 📁 Project Structure
-
-```
-ai_fleet/
-│
-├── ai_fleet.py
-├── yolov8n.pt (optional)
-├── ai_fleet_log.csv
-└── README.md
-```
-
----
-
-# ▶️ Run the System
-
-Navigate to project folder:
-
-```bash
-cd ai_fleet
-```
-
-Run:
-
-```bash
-python3 ai_fleet.py
-```
-
----
-
-# 🌐 Open Dashboard
-
-Find Jetson IP:
-
-```bash
-hostname -I
-```
-
-Open in browser:
-
-```
-http://<jetson_ip>:5000
-```
-
-You will see:
-
-- Road Stream (always active)
-- Secondary Stream (Driver or Cargo)
-- Mode switch buttons
-
----
-
-# 🔁 Mode Switching
-
-Default mode: Driver
-
-Driver Mode:
-- Uses Camera 0 + Camera 1
-
-Cargo Mode:
-- Uses Camera 2 + Camera 1
-
-When switching:
-- Secondary camera is released
-- New camera starts
-- Road camera continues running
-
----
-
-# 🚨 Alert System
-
-When triggered:
-
-System sends:
-- Telegram message
-- SMS message
-- Logs event to CSV
-
-Alerts include:
-- DRIVER DROWSY
-- UNAUTHORIZED CARGO ACCESS
-- HIGH VIBRATION
-- DOOR OPEN
-
----
-
-# 📍 GPS Logging
-
-Every 5 seconds:
-- Reads GPS from SIM7600
-- Saves to `ai_fleet_log.csv`
-
----
-
-# 📊 Log File Format
-
-```
-timestamp,module,submodule,message
-```
-
-Example:
-
-```
-2026-02-12T10:22:15,GPS,DATA,+CGPSINFO:...
-```
-
----
-
-# ⚙️ Auto Start on Boot (Optional)
-
-Create service file:
-
-```bash
-sudo nano /etc/systemd/system/ai_fleet.service
-```
-
-Paste:
-
-```
-[Unit]
-Description=AI Fleet System
-After=network.target
-
-[Service]
-ExecStart=/usr/bin/python3 /home/<username>/ai_fleet/ai_fleet.py
-WorkingDirectory=/home/<username>/ai_fleet
-Restart=always
-User=<username>
-
-[Install]
-WantedBy=multi-user.target
-```
-
-Enable:
-
-```bash
-sudo systemctl daemon-reload
-sudo systemctl enable ai_fleet
-sudo systemctl start ai_fleet
-```
-
----
-
-# 🛠 Troubleshooting
-
-## Camera Not Detected
-```
-ls /dev/video*
-```
-Replug USB.
-
-## SIM Not Detected
-```
-ls /dev/ttyUSB*
-```
-
-## GPS Not Working
-Inside minicom:
-```
-AT+CGPS=1
-```
-
-## Low FPS
-Reduce resolution in script:
-```
-self.cap.set(3,640)
-self.cap.set(4,480)
-```
-
----
-
-# 📌 Final System Behavior
-
-| Feature | Status |
-|----------|--------|
-| Road Detection | Always Active |
-| Driver Detection | Switchable |
-| Cargo Detection | Switchable |
-| GPS Logging | Active |
-| SMS Alerts | Active |
-| Telegram Alerts | Active |
-| Dashboard | Active |
-
----
-
-# 🎓 Project Result
-
-This system creates a real-time AI fleet monitoring node capable of:
-
-- Driver safety monitoring
-- Cargo security monitoring
-- Road object detection
-- GPS tracking
-- Remote alerting
-- Live video streaming
-- Dynamic mode switching
+- **Drowsiness Calibrations (4s)**: Auto-calibrates individual EAR/MAR constraints dynamically over 4 seconds before beginning to monitor.
+- **Sleepy Alert**: EAR drops below strictly > `2.0s`. Sounds buzzer, logs "sleepy".
+- **Yawning Alert**: MAR crosses threshold strictly > `3.0s`. Sounds buzzer, logs "yawning".
+- **Distraction Alert**: Head fully turned horizontally > `8.0s`. Sounds buzzer, logs "distraction".
+- **Phone Detection**: Mobile in hand recognized immediately via YOLOv8 model. Logs "phone detected".
+- **Cargo Rolling Baseline Accuracy**: Re-evaluates baseline items fully automatically every `15s` against the `yolov8s` tracker. Explicitly drops `missing` logs tracking missing item/quantity gaps. CONF index tightened to 0.25 logic for maximum object recall.
